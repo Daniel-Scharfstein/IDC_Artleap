@@ -61,8 +61,6 @@ public class UploadingImgActivity extends Activity {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-
-//            imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
         }
     }
 }

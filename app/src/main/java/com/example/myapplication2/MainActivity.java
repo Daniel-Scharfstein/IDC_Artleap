@@ -1,14 +1,15 @@
 package com.example.myapplication2;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.Toast;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     ImageView imageButton;
@@ -18,6 +19,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         addListenerOnTemplateImage();
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.activity_main);
+
 
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);

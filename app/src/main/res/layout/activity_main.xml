@@ -6,18 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="425dp"
-        android:contentDescription="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
-        app:srcCompat="@drawable/template2" />
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="7dp"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="@string/my_action_bar"
+            android:fontFamily="sans-serif-light"
+            android:textColor="@color/purple_200"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+
 
     <TextView
         android:id="@+id/editTextTextPersonName"
@@ -27,8 +36,10 @@
         android:layout_marginBottom="28dp"
         android:autofillHints="username"
         android:ems="10"
+        android:fontFamily="sans-serif-light"
         android:text="@string/ChooseYourTemplate"
         android:textSize="23sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -36,34 +47,90 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="LabelFor" />
 
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="155dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="37dp"
+        android:contentDescription="@null"
+        app:layout_constraintBottom_toTopOf="@+id/imageView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/template2" />
+
+
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="155dp"
         android:layout_marginEnd="39dp"
+        android:layout_marginBottom="37dp"
         android:contentDescription="@null"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintBottom_toTopOf="@+id/imageView5"
         app:layout_constraintEnd_toStartOf="@+id/imageView3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/template1" />
 
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginBottom="35dp"
+        android:contentDescription="@null"
+        app:layout_constraintBottom_toTopOf="@+id/imageView7"
+        app:layout_constraintEnd_toStartOf="@+id/imageView6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:srcCompat="@drawable/template3" />
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="182dp"
-        android:layout_height="220dp"
-        android:orientation="vertical"
-        tools:ignore="MissingConstraints,RedundantNamespace">
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="35dp"
+        android:contentDescription="@null"
+        app:layout_constraintBottom_toTopOf="@+id/imageView8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:srcCompat="@drawable/template4" />
 
-        <ImageButton
-            android:id="@+id/imageButton1"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/template1"
-            tools:ignore="ContentDescription" />
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginBottom="51dp"
+        android:contentDescription="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:srcCompat="@drawable/template5" />
 
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="51dp"
+        android:contentDescription="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView7"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:srcCompat="@drawable/template6" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
