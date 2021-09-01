@@ -17,22 +17,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        addListenerOnButton();
+        addListenerOnTemplateImage();
 
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
     }
 
-    public void addListenerOnButton() {
+    public void addListenerOnTemplateImage() {
 
         imageButton = findViewById(R.id.imageView4);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this,
-                        "ImageButton is clicked!", Toast.LENGTH_SHORT).show();
-                openLoadingPage();
-            }
+        imageButton.setOnClickListener(view -> {
+            Toast.makeText(MainActivity.this,
+                    "ImageButton is clicked!", Toast.LENGTH_SHORT).show();
+            openLoadingPage();
         });
     }
     public void openLoadingPage()

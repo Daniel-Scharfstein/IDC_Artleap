@@ -60,7 +60,8 @@
             android:id="@+id/imageButton1"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/template1" />
+            android:src="@drawable/template1"
+            tools:ignore="ContentDescription" />
 
     </LinearLayout>
 

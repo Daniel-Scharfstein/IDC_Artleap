@@ -5,7 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.22552083333333334" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/loading_page.xml" value="0.2875905797101449" />
+        <entry key="app/src/main/res/layout/loading_page.xml" value="0.1" />
         <entry key="app/src/main/res/layout/splash.xml" value="0.209375" />
       </map>
     </option>
