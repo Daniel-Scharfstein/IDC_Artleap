@@ -26,15 +26,11 @@ public class MainActivity extends AppCompatActivity {
     public void addListenerOnTemplateImage() {
 
         imageButton = findViewById(R.id.imageView4);
-        imageButton.setOnClickListener(view -> {
-            Toast.makeText(MainActivity.this,
-                    "ImageButton is clicked!", Toast.LENGTH_SHORT).show();
-            openLoadingPage();
-        });
+        imageButton.setOnClickListener(view -> openLoadingPage());
     }
     public void openLoadingPage()
     {
-        Intent intent = new Intent(this,LoadingScreenActivity.class);
+        Intent intent = new Intent(this,UploadingImgActivity.class);
         startActivity(intent);
     }
 }
