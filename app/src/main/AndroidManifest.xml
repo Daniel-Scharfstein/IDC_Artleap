@@ -31,11 +31,7 @@
             android:exported="true">
         </activity>
         <activity
-            android:name=".OpenGLES20Activity"
-            android:exported="true">
-        </activity>
-        <activity
-            android:name=".Run"
+            android:name=".OpenGLActivity"
             android:exported="true">
         </activity>
 
