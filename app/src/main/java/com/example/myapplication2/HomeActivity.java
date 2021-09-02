@@ -4,12 +4,15 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
 import java.util.Objects;
+
+import javax.microedition.khronos.opengles.GL10;
 
 public class HomeActivity extends AppCompatActivity {
     ImageView imageButton;
@@ -29,13 +32,14 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void addListenerOnTemplateImage() {
-
         imageButton = findViewById(R.id.imageView4);
         imageButton.setOnClickListener(view -> openLoadingPage());
     }
+
     public void openLoadingPage()
     {
         Intent intent = new Intent(this,UploadingImgActivity.class);
         startActivity(intent);
     }
+
 }
