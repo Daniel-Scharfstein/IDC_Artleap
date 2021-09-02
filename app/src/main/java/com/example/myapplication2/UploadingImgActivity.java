@@ -41,11 +41,7 @@ public class UploadingImgActivity extends Activity {
     }
 
     public void drawOpenGL(){
-        Intent intent = new Intent(this, OpenGLES20Activity.class);
-//        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-//        pic.compress(Bitmap.CompressFormat.PNG, 100, stream);
-//        byte[] byteArray = stream.toByteArray();
-//        intent.putExtra("picture", byteArray);
+        Intent intent = new Intent(this, Run.class);
         startActivity(intent);
     }
 
