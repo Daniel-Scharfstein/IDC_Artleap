@@ -4,6 +4,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
@@ -20,17 +21,16 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
         addListenerOnTemplateImage();
 
-        Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.activity_home_page);
-
 
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        window.getDecorView().setBackgroundColor(Color.DKGRAY);
+
     }
 
     public void addListenerOnTemplateImage() {
 
-        imageButton = findViewById(R.id.imageView4);
+        imageButton = findViewById(R.id.imageView13);
         imageButton.setOnClickListener(view -> openLoadingPage());
     }
     public void openLoadingPage()

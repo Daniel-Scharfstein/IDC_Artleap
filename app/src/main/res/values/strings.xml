@@ -2,6 +2,6 @@
     <string name="app_name">Artleap</string>
     <string name="ChooseYourTemplate">Choose Your Template</string>
     <string name="load_picture">Load Picture</string>
-    <string name="upload_photo">Upload Photo</string>
+    <string name="upload_photo">Continue</string>
     <string name="my_action_bar">Artleap</string>
 </resources>
