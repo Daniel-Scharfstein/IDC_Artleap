@@ -9,7 +9,7 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="367dp"
+        android:layout_width="300dp"
         android:layout_height="608dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,44 +17,33 @@
         app:layout_constraintTop_toTopOf="parent"
         >
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imageView13"
-                android:layout_width="270dp"
+                android:layout_width="300dp"
                 android:layout_height="300dp"
-                app:layout_constraintEnd_toEndOf="@+id/imageView15"
-                app:layout_constraintStart_toStartOf="@+id/imageView15"
-                app:layout_constraintTop_toTopOf="parent"
+                android:layout_weight="1"
                 app:srcCompat="@drawable/template1" />
 
             <ImageView
                 android:id="@+id/imageView14"
-                android:layout_width="270dp"
+                android:layout_width="300dp"
                 android:layout_height="300dp"
-                android:layout_marginTop="48dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.554"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView13"
-                app:layout_constraintVertical_bias="0.0"
+                android:layout_marginTop="60dp"
+                android:layout_weight="1"
                 app:srcCompat="@drawable/template2" />
 
             <ImageView
                 android:id="@+id/imageView15"
-                android:layout_width="270dp"
+                android:layout_width="300dp"
                 android:layout_height="300dp"
-                android:layout_marginTop="680dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="60dp"
                 app:srcCompat="@drawable/template3" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

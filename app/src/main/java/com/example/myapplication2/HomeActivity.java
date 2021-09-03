@@ -4,10 +4,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 
 import java.util.Objects;
@@ -20,11 +17,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         addListenerOnTemplateImage();
+        setActionBar();
 
-
-        Window window = getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        window.getDecorView().setBackgroundColor(Color.DKGRAY);
 
     }
 
@@ -37,5 +31,12 @@ public class HomeActivity extends AppCompatActivity {
     {
         Intent intent = new Intent(this,UploadingImgActivity.class);
         startActivity(intent);
+    }
+
+    public void setActionBar() {
+        // TODO Auto-generated method stub
+        Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.action_bar);
+
     }
 }

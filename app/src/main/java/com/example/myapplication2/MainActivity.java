@@ -24,11 +24,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        setActionBar();
 
         splashProgress = findViewById(R.id.splashProgress);
         playProgress();
-
-        getWindow().getDecorView().setBackgroundColor(Color.DKGRAY);
 
         new Handler(getMainLooper()).postDelayed(new Runnable() {
             @Override
@@ -49,4 +48,12 @@ public class MainActivity extends AppCompatActivity {
                 .setDuration(2000)
                 .start();
     }
+
+    public void setActionBar() {
+        // TODO Auto-generated method stub
+        Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_USE_LOGO);
+        getSupportActionBar().setCustomView(R.layout.action_bar);
+
+    }
+
 }
