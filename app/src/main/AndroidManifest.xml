@@ -24,7 +24,7 @@
             android:exported="true">
         </activity>
         <activity
-            android:name=".LoadingScreenActivity"
+            android:name=".EditImageActivity"
             android:exported="true">
         </activity>
         <activity

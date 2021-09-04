@@ -2,16 +2,12 @@ package com.example.myapplication2;
 
 import android.animation.ObjectAnimator;
 import android.content.Intent;
-import android.graphics.Color;
+import android.os.Bundle;
 import android.os.Handler;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.ProgressBar;
 
 import java.util.Objects;
 
