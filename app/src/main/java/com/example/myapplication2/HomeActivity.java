@@ -35,9 +35,9 @@ public class HomeActivity extends AppCompatActivity {
             startActivityForResult(i, RESULT_LOAD_IMAGE);
         });
     }
-    public void openEditPage()
-    {
-        Intent intent = new Intent(this,EditImageActivity.class);
+
+    public void openEditPage() {
+        Intent intent = new Intent(this, EditImageActivity.class);
         startActivity(intent);
     }
 

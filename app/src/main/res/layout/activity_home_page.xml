@@ -9,7 +9,7 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="300dp"
+        android:layout_width="380dp"
         android:layout_height="608dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,15 +24,15 @@
 
             <ImageView
                 android:id="@+id/imageView13"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:layout_width="380dp"
+                android:layout_height="380dp"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/template1" />
 
             <ImageView
                 android:id="@+id/imageView14"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:layout_width="380dp"
+                android:layout_height="380dp"
                 android:layout_marginTop="60dp"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/template2" />

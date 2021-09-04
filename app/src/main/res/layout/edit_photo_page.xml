@@ -29,7 +29,7 @@
         android:id="@+id/colorButton"
         android:layout_width="72dp"
         android:layout_height="71dp"
-        android:background="#272326"
+        android:background="#141416"
         android:src="@drawable/color_edit_small"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +43,7 @@
         android:id="@+id/spreadButton"
         android:layout_width="72dp"
         android:layout_height="71dp"
-        android:background="#272326"
+        android:background="#141416"
         android:src="@drawable/spread_bar_edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +57,7 @@
         android:id="@+id/angleButton"
         android:layout_width="72dp"
         android:layout_height="71dp"
-        android:background="#272326"
+        android:background="#141416"
         android:src="@drawable/angle_bar_edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -97,18 +97,18 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintVertical_bias="1.0" />
 
-    <ImageButton
-        android:id="@+id/shareButton"
-        android:layout_width="108dp"
-        android:layout_height="54dp"
-        android:background="#272326"
-        android:src="@drawable/share_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+<!--    <ImageButton-->
+<!--        android:id="@+id/shareButton"-->
+<!--        android:layout_width="108dp"-->
+<!--        android:layout_height="54dp"-->
+<!--        android:background="#141416"-->
+<!--        android:src="@drawable/share_button"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="1.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.0"-->
+<!--        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

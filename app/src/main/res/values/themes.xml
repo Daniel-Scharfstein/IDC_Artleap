@@ -2,12 +2,12 @@
     <!-- Base application theme. -->
     <style name="Theme.MyApplication2" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#272326</item>
+        <item name="colorPrimary">#141416</item>
         <item name="colorPrimaryVariant">@color/black</item>
         <item name="colorOnPrimary">@color/white</item>
-        <item name="android:background">#272326</item>
-        <item name="android:windowBackground">#272326</item>
-        <item name="android:colorBackground">#272326</item>
+        <item name="android:background">#141416</item>
+        <item name="android:windowBackground">#141416</item>
+        <item name="android:colorBackground">#141416</item>
 
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>

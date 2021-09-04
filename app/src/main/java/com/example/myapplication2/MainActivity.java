@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         }, SPLASH_TIME);
 
 
-
     }
 
     //Method to run progress bar for 5 seconds

@@ -4,5 +4,5 @@
     <string name="load_picture">Load Picture</string>
     <string name="upload_photo">Continue</string>
     <string name="my_action_bar">Artleap</string>
-    <string name="split_colors">Split Colors</string>
+    <string name="split_colors">Split Colors\nSee yourself in triple (or more!)</string>
 </resources>
