@@ -4,5 +4,13 @@
     <string name="load_picture">Load Picture</string>
     <string name="upload_photo">Continue</string>
     <string name="my_action_bar">Artleap</string>
-    <string name="split_colors">Split Colors\nSee yourself in triple (or more!)</string>
+    <string name="split_colors">Split Colors</string>
+    <string name="split_colors_Title">"   Split Colors"</string>
+    <string name="color_split_desc">"    See yourself in triple (or more!)"</string>
+    <string name="KaleidoDrop_Title">"   KaleidoDrop"</string>
+    <string name="Kaleido_desc">"    Kaleido the background behind any subject!"</string>
+    <string name="Lensball_Title">"   Lensball"</string>
+    <string name="Lensball_desc">"    Stand-out with stunning reflections."</string>
+
+
 </resources>

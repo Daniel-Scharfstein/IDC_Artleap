@@ -94,8 +94,9 @@ public class EditImageActivity extends AppCompatActivity {
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
 
-    public void openHomePage(MenuItem item) {
-        Intent intent = new Intent(this, HomeActivity.class);
-        startActivity(intent);
-    }
+        public void openHomePage(MenuItem item)
+        {
+            Intent intent = new Intent(this,HomeActivity.class);
+            startActivity(intent);
+        }
 }
