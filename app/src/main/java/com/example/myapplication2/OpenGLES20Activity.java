@@ -9,8 +9,6 @@ import android.graphics.BitmapFactory;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 
-import com.example.myapplication2.R;
-import com.example.myapplication2.MyGLRenderer;
 import com.example.myapplication2.openglHelper.PictureRenderer;
 
 import java.io.File;

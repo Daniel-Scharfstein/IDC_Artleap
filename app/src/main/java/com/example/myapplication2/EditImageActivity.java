@@ -1,7 +1,13 @@
 package com.example.myapplication2;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ConfigurationInfo;
 import android.content.res.ColorStateList;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -9,17 +15,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
-import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.example.myapplication2.openglHelper.PictureRenderer;
+
+import java.io.File;
 import java.util.Objects;
 
 public class EditImageActivity extends AppCompatActivity {
     public static final int PINK = 0xFFF15ECF;
     MenuItem menuItem;
+    private GLSurfaceView gLView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +36,8 @@ public class EditImageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_photo_page);
         setActionBar();
+
+        openImageWithOpenGl();
 
         SeekBar skbar = findViewById(R.id.seekBar);
         skbar.setProgressTintList(ColorStateList.valueOf(PINK));
@@ -48,9 +59,7 @@ public class EditImageActivity extends AppCompatActivity {
                 angleButton.setVisibility(View.VISIBLE);
                 spreadButton.setVisibility(View.VISIBLE);
             }
-
         });
-
 
     }
 
@@ -96,9 +105,28 @@ public class EditImageActivity extends AppCompatActivity {
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
 
-        public void openHomePage(MenuItem item)
-        {
-            Intent intent = new Intent(this,HomeActivity.class);
-            startActivity(intent);
+    public void openHomePage(MenuItem item) {
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+    }
+
+    private void openImageWithOpenGl() {
+
+        final ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        final ConfigurationInfo configurationInfo = activityManager.getDeviceConfigurationInfo();
+        final boolean supportsEs2 = configurationInfo.reqGlEsVersion >= 0x20000;
+
+        String filePath = getIntent().getStringExtra("path");
+        File file = new File(filePath);
+        Bitmap picture = BitmapFactory.decodeFile(file.getAbsolutePath());
+
+        if (supportsEs2) {
+            setContentView(R.layout.edit_photo_page);
+            gLView = (GLSurfaceView) this.findViewById(R.id.check);
+            gLView.setEGLContextClientVersion(2);
+            PictureRenderer renderer = new PictureRenderer(getApplicationContext());
+            renderer.pic = picture;
+            gLView.setRenderer(renderer);
         }
+    }
 }

@@ -44,8 +44,10 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-    public void openEditPage() {
+    public void openEditPage(Bitmap pic) {
         Intent intent = new Intent(this, EditImageActivity.class);
+        String filePath = tempFileImage(this, pic, "tempImage");
+        intent.putExtra("path", filePath);
         startActivity(intent);
     }
 
@@ -68,14 +70,6 @@ public class HomeActivity extends AppCompatActivity {
         return imageFile.getAbsolutePath();
     }
 
-    public void drawOpenGl(Bitmap pic){
-        Intent intent = new Intent(this, OpenGLES20Activity.class);
-        String filePath = tempFileImage(this,pic,"tempImage");
-        intent.putExtra("path", filePath);
-        startActivity(intent);
-    }
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -89,18 +83,10 @@ public class HomeActivity extends AppCompatActivity {
             Bitmap bitmap;
             try {
                 bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(selectedImage));
-                drawOpenGl(bitmap);
-//                imageView.setImageBitmap(bitmap);
+                openEditPage(bitmap);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-//            openEditPage();
-
-
-
-//            Button buttonUploadImage = findViewById(R.id.buttonUploadPhoto);
-//            buttonUploadImage.setVisibility(View.VISIBLE);
-
         }
     }
 

@@ -27,10 +27,5 @@
             android:name=".EditImageActivity"
             android:exported="true">
         </activity>
-        <activity
-            android:name=".OpenGLES20Activity"
-            android:exported="true">
-        </activity>
     </application>
-
 </manifest>
