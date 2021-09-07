@@ -1,15 +1,23 @@
 package com.example.myapplication2;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.Objects;
 
 public class HomeActivity extends AppCompatActivity {
@@ -42,6 +50,32 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
+    public static String tempFileImage(Context context, Bitmap bitmap, String name) {
+
+        File outputDir = context.getCacheDir();
+        File imageFile = new File(outputDir, name + ".jpg");
+
+        OutputStream os;
+        try {
+            os = new FileOutputStream(imageFile);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os);
+            os.flush();
+            os.close();
+        } catch (Exception e) {
+            Log.e(context.getClass().getSimpleName(), "Error writing file", e);
+        }
+
+        return imageFile.getAbsolutePath();
+    }
+
+    public void drawOpenGl(Bitmap pic){
+        Intent intent = new Intent(this, OpenGLES20Activity.class);
+        String filePath = tempFileImage(this,pic,"tempImage");
+        intent.putExtra("path", filePath);
+        startActivity(intent);
+    }
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -52,15 +86,18 @@ public class HomeActivity extends AppCompatActivity {
                     filePathColumn, null, null, null);
             cursor.moveToFirst();
             cursor.close();
-//            ImageView imageView = findViewById(R.id.imgView);
-//            Bitmap bitmap;
-//            try {
-//                bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(selectedImage));
+            Bitmap bitmap;
+            try {
+                bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(selectedImage));
+                drawOpenGl(bitmap);
 //                imageView.setImageBitmap(bitmap);
-//            } catch (FileNotFoundException e) {
-//                e.printStackTrace();
-//            }
-            openEditPage();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+//            openEditPage();
+
+
+
 //            Button buttonUploadImage = findViewById(R.id.buttonUploadPhoto);
 //            buttonUploadImage.setVisibility(View.VISIBLE);
 

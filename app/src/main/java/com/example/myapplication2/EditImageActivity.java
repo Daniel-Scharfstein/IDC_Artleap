@@ -50,6 +50,8 @@ public class EditImageActivity extends AppCompatActivity {
             }
 
         });
+
+
     }
 
     public void showSeekBar(SeekBar skbar, ImageButton colorButton, ImageButton angleButton, ImageButton spreadButton) {
