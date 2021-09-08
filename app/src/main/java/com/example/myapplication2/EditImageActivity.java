@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,14 +31,13 @@ public class EditImageActivity extends AppCompatActivity {
     MenuItem menuItem;
     private GLSurfaceView gLView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_photo_page);
         setActionBar();
-
-        openImageWithOpenGl();
 
         SeekBar skbar = findViewById(R.id.seekBar);
         skbar.setProgressTintList(ColorStateList.valueOf(PINK));
@@ -59,7 +59,11 @@ public class EditImageActivity extends AppCompatActivity {
                 angleButton.setVisibility(View.VISIBLE);
                 spreadButton.setVisibility(View.VISIBLE);
             }
+
         });
+
+        openImageWithOpenGl();
+
 
     }
 

@@ -14,7 +14,9 @@ import javax.microedition.khronos.opengles.GL10;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.opengl.GLES20;
 import android.opengl.GLSurfaceView.Renderer;
+import android.opengl.Matrix;
 
 import com.example.myapplication2.R;
 import com.example.myapplication2.utils.MatrixHelper;
@@ -53,7 +55,8 @@ public class PictureRenderer implements Renderer {
         // Set the OpenGL viewport to fill the entire surface.
         glViewport(0, 0, width, height);
 
-        MatrixHelper.perspectiveM(projectionMatrix, 20, (float) width
+
+        MatrixHelper.perspectiveM(projectionMatrix, 45, (float) width
                 / (float) height, 1f, 10f);
 
         setIdentityM(modelMatrix, 0);

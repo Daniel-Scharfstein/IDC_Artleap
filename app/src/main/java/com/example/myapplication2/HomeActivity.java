@@ -70,6 +70,14 @@ public class HomeActivity extends AppCompatActivity {
         return imageFile.getAbsolutePath();
     }
 
+    public void drawOpenGl(Bitmap pic){
+        Intent intent = new Intent(this, OpenGLES20Activity.class);
+        String filePath = tempFileImage(this,pic,"tempImage");
+        intent.putExtra("path", filePath);
+        startActivity(intent);
+    }
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
