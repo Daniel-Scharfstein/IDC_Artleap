@@ -19,6 +19,12 @@ import android.util.Log;
 
 public class TextureHelper {
     private static final String TAG = "TextureHelper";
+    private static int[] textureObjectIds;
+
+
+    public static void setTextureHandle(int numberOfTextures){
+        textureObjectIds = new int[numberOfTextures];
+    }
 
     /**
      * Loads a texture from a resource ID, returning the OpenGL ID for that
@@ -26,17 +32,16 @@ public class TextureHelper {
      *
      * @return
      */
-    public static int loadTexture(Bitmap pic) {
-        final int[] textureObjectIds = new int[1];
-        glGenTextures(1, textureObjectIds, 0);
+    public static int loadTexture(Bitmap pic, int id) {
+        glGenTextures(1, textureObjectIds, id);
 
-        if (textureObjectIds[0] == 0) {
+        if (textureObjectIds[id] == 0) {
             Log.w(TAG, "Could not generate a new OpenGL texture object.");
             return 0;
         }
 
         // Bind to the texture in OpenGL
-        glBindTexture(GL_TEXTURE_2D, textureObjectIds[0]);
+        glBindTexture(GL_TEXTURE_2D, textureObjectIds[id]);
 
         // Set filtering: a default must be set, or the texture will be
         // black.
@@ -50,8 +55,8 @@ public class TextureHelper {
         pic.recycle();
 
         // Unbind from the texture.
-        glBindTexture(GL_TEXTURE_2D, 0);
+        glBindTexture(GL_TEXTURE_2D, id);
 
-        return textureObjectIds[0];
+        return textureObjectIds[id];
     }
 }
