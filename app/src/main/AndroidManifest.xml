@@ -28,7 +28,7 @@
             android:exported="true">
         </activity>
         <activity
-            android:name=".tfLiteActivity"
+            android:name=".SegmantationActivity"
             android:exported="true">
         </activity>
     </application>

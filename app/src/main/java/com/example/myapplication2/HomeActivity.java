@@ -45,9 +45,9 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void openEditPage(Bitmap pic) {
-        Intent intent = new Intent(this, tfLiteActivity.class);
-//        String filePath = tempFileImage(this, pic, "tempImage");
-//        intent.putExtra("path", filePath);
+        Intent intent = new Intent(this, EditImageActivity.class);
+        String filePath = tempFileImage(this, pic, "tempImage");
+        intent.putExtra("path", filePath);
         startActivity(intent);
     }
 
