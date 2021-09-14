@@ -1,8 +1,13 @@
 package com.example.myapplication2.openglHelper;
 
+import static android.opengl.GLES20.GL_BLEND;
 import static android.opengl.GLES20.GL_COLOR_BUFFER_BIT;
+import static android.opengl.GLES20.GL_ONE_MINUS_SRC_ALPHA;
+import static android.opengl.GLES20.GL_SRC_ALPHA;
+import static android.opengl.GLES20.glBlendFunc;
 import static android.opengl.GLES20.glClear;
 import static android.opengl.GLES20.glClearColor;
+import static android.opengl.GLES20.glEnable;
 import static android.opengl.GLES20.glViewport;
 import static android.opengl.Matrix.multiplyMM;
 import static android.opengl.Matrix.orthoM;
@@ -25,20 +30,28 @@ import com.example.myapplication2.R;
 import com.example.myapplication2.utils.MatrixHelper;
 import com.example.myapplication2.utils.TextResourceReader;
 
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+
 
 public class PictureRenderer implements Renderer {
     private final Context context;
 
-    private final float[] projectionMatrix = new float[16];
-    private final float[] modelMatrix = new float[16];
+
     private final Matrix4f matrix = new Matrix4f();
+    private final Matrix4f matrix2 = new Matrix4f();
 
     private Picture picture;
+    private Picture picture2;
     public Bitmap pic;
 
     private TextureShaderProgram textureProgram;
+    private TextureShaderProgram textureProgram2;
+
 
     private int texture;
+    private int texture2;
+
 
     public PictureRenderer(Context context) {
         this.context = context;
@@ -48,16 +61,20 @@ public class PictureRenderer implements Renderer {
     public void onSurfaceCreated(GL10 glUnused, EGLConfig config) {
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
-
-//        Bitmap mock =  BitmapFactory.decodeResource(context.getResources(),
-//                R.drawable.mock_ido);
+        Bitmap mock =  BitmapFactory.decodeResource(context.getResources(),
+                R.drawable.mock_ido);
 
         picture = new Picture();
+        picture2 = new Picture();
+
         TextureHelper.setTextureHandle(2);
 
         textureProgram = new TextureShaderProgram(context);
+        textureProgram2 = new TextureShaderProgram(context);
+
 
         texture = TextureHelper.loadTexture(pic,0);
+        texture2 = TextureHelper.loadTexture(pic,1);
 
     }
 
@@ -66,16 +83,7 @@ public class PictureRenderer implements Renderer {
         // Set the OpenGL viewport to fill the entire surface.
         glViewport(0, 0, width, height);
         setPictureScale(height, width);
-
-//        MatrixHelper.perspectiveM(projectionMatrix, 45, (float) width
-//                / (float) height, 1f, 10f);
-
-//        setIdentityM(modelMatrix, 0);
-//        translateM(modelMatrix, 0, 0f, 0f, -2.5f);
-
-//        final float[] temp = new float[16];
-//        multiplyMM(temp, 0, projectionMatrix, 0, modelMatrix, 0);
-//        System.arraycopy(temp, 0, projectionMatrix, 0, temp.length);
+        movePicture(0.5f,0);
     }
 
     @Override
@@ -83,12 +91,24 @@ public class PictureRenderer implements Renderer {
         // Clear the rendering surface.
         glClear(GL_COLOR_BUFFER_BIT);
 
+
+        textureProgram2.useProgram();
+        textureProgram2.setUniforms(matrix2.getArray(), texture2, 1f);
+        picture2.bindData(textureProgram2);
+        picture2.draw();
+
+        glEnable( GL_BLEND );
+        glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
+
         // Draw the table.
         textureProgram.useProgram();
-        textureProgram.setUniforms(matrix.getArray(), texture);
-
+        textureProgram.setUniforms(matrix.getArray(), texture, 0.5f);
         picture.bindData(textureProgram);
         picture.draw();
+
+
+
+
 
     }
 
@@ -102,5 +122,27 @@ public class PictureRenderer implements Renderer {
         } else {
             matrix.loadOrtho(-1f,1f,-aspectRatio, aspectRatio,-1f,1f);
         }
+
     }
+
+    private void movePicture(float x, float y){
+        matrix.loadTranslate(x,y,0);
+    }
+
+//    public Bitmap saveChanges(){
+//        int width = pic.getWidth();
+//        int height = pic.getHeight();
+//
+//
+//        int size = width * height;
+//        ByteBuffer buf = ByteBuffer.allocateDirect(size * 4);
+//        buf.order(ByteOrder.nativeOrder());
+//        GLES20.glReadPixels(0, 0, width, height, GL10.GL_RGBA, GL10.GL_UNSIGNED_BYTE, buf);
+//
+//        int data[] = new int[size];
+//        buf.asIntBuffer().get(data);
+//        Bitmap createdBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
+//        createdBitmap.setPixels(data, size-width, -width, 0, 0, width, height);
+//    }
+
 }

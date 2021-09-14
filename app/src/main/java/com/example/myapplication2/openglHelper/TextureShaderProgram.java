@@ -7,8 +7,10 @@ import com.example.myapplication2.R;
 
 public class TextureShaderProgram extends ShaderProgram {
     // Uniform locations
-    private final int uMatrixLocation;
+    private final int uMatrix;
     private final int uTextureUnitLocation;
+    private final int uOpacity;
+
 
     // Attribute locations
     private final int aPositionLocation;
@@ -19,18 +21,20 @@ public class TextureShaderProgram extends ShaderProgram {
                 R.raw.texture_fragment_shader);
 
         // Retrieve uniform locations for the shader program.
-        uMatrixLocation = GLES20.glGetUniformLocation(program, U_MATRIX);
+        uMatrix = GLES20.glGetUniformLocation(program, U_MATRIX);
         uTextureUnitLocation = GLES20.glGetUniformLocation(program, U_TEXTURE_UNIT);
 
         // Retrieve attribute locations for the shader program.
         aPositionLocation = GLES20.glGetAttribLocation(program, A_POSITION);
         aTextureCoordinatesLocation =
                 GLES20.glGetAttribLocation(program, A_TEXTURE_COORDINATES);
+
+        uOpacity =  GLES20.glGetUniformLocation(program, U_OPACITY);
     }
 
-    public void setUniforms(float[] matrix, int textureId) {
+    public void setUniforms(float[] matrix, int textureId, float opacity) {
         // Pass the matrix into the shader program.
-        GLES20.glUniformMatrix4fv(uMatrixLocation, 1, false, matrix, 0);
+        GLES20.glUniformMatrix4fv(uMatrix, 1, false, matrix, 0);
 
         // Set the active texture unit to texture unit 0.
         GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
@@ -41,6 +45,8 @@ public class TextureShaderProgram extends ShaderProgram {
         // Tell the texture uniform sampler to use this texture in the shader by
         // telling it to read from texture unit 0.
         GLES20.glUniform1i(uTextureUnitLocation, 0);
+
+        GLES20.glUniform1f(uOpacity, opacity);
     }
 
     public int getPositionAttributeLocation() {
