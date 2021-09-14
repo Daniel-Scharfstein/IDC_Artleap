@@ -98,18 +98,45 @@
         app:layout_constraintTop_toBottomOf="@+id/check"
         app:layout_constraintVertical_bias="1.0" />
 
-<!--    <ImageButton-->
-<!--        android:id="@+id/shareButton"-->
-<!--        android:layout_width="108dp"-->
-<!--        android:layout_height="54dp"-->
-<!--        android:background="#141416"-->
-<!--        android:src="@drawable/share_button"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="1.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.0"-->
-<!--        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />-->
+    <ImageButton
+        android:id="@+id/checkBox"
+        android:layout_width="55dp"
+        android:layout_height="38dp"
+        android:background="#141416"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.633"
+        app:layout_constraintStart_toEndOf="@+id/seekBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.733"
+        app:srcCompat="@drawable/check_box" />
+
+    <ImageButton
+        android:id="@+id/xBox"
+        android:layout_width="55dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="16dp"
+        android:background="#141416"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/seekBar"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.738"
+        app:srcCompat="@drawable/x_box" />
+
+    <!--    <ImageButton-->
+    <!--        android:id="@+id/shareButton"-->
+    <!--        android:layout_width="108dp"-->
+    <!--        android:layout_height="54dp"-->
+    <!--        android:background="#141416"-->
+    <!--        android:src="@drawable/share_button"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="1.0"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.0"-->
+    <!--        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
