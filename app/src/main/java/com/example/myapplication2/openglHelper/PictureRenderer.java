@@ -26,12 +26,14 @@ import android.opengl.GLSurfaceView.Renderer;
 import android.opengl.Matrix;
 import android.renderscript.Matrix4f;
 
+import com.example.myapplication2.EditImageActivity;
 import com.example.myapplication2.R;
 import com.example.myapplication2.utils.MatrixHelper;
 import com.example.myapplication2.utils.TextResourceReader;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.nio.IntBuffer;
 
 
 public class PictureRenderer implements Renderer {
@@ -44,10 +46,17 @@ public class PictureRenderer implements Renderer {
     private Picture picture;
     private Picture picture2;
     public Bitmap pic;
+    public Bitmap savedPicture;
+
+
+
+
 
     private TextureShaderProgram textureProgram;
     private TextureShaderProgram textureProgram2;
 
+    private int checkWidth;
+    private int checkHeight;
 
     private int texture;
     private int texture2;
@@ -82,8 +91,11 @@ public class PictureRenderer implements Renderer {
     public void onSurfaceChanged(GL10 glUnused, int width, int height) {
         // Set the OpenGL viewport to fill the entire surface.
         glViewport(0, 0, width, height);
-        setPictureScale(height, width);
+        setPictureScale(width, height);
         movePicture(0.5f,0);
+
+        checkWidth = width;
+        checkHeight = height;
     }
 
     @Override
@@ -106,13 +118,15 @@ public class PictureRenderer implements Renderer {
         picture.bindData(textureProgram);
         picture.draw();
 
+        saveChanges(checkWidth, checkHeight);
+
 
 
 
 
     }
 
-    private void setPictureScale(int viewHeight, int viewWidth){
+    private void setPictureScale(int viewWidth, int viewHeight){
 
         final float aspectRatio = viewWidth > viewHeight ?
                 (float) viewWidth / (float) viewHeight :
@@ -129,20 +143,26 @@ public class PictureRenderer implements Renderer {
         matrix.loadTranslate(x,y,0);
     }
 
-//    public Bitmap saveChanges(){
-//        int width = pic.getWidth();
-//        int height = pic.getHeight();
-//
-//
-//        int size = width * height;
-//        ByteBuffer buf = ByteBuffer.allocateDirect(size * 4);
-//        buf.order(ByteOrder.nativeOrder());
-//        GLES20.glReadPixels(0, 0, width, height, GL10.GL_RGBA, GL10.GL_UNSIGNED_BYTE, buf);
-//
-//        int data[] = new int[size];
-//        buf.asIntBuffer().get(data);
-//        Bitmap createdBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
-//        createdBitmap.setPixels(data, size-width, -width, 0, 0, width, height);
-//    }
+    public void saveChanges(int width, int height){
+        int screenshotSize = width * height;
+        ByteBuffer bb = ByteBuffer.allocateDirect(screenshotSize * 4);
+        bb.order(ByteOrder.nativeOrder());
+        GLES20.glReadPixels(0, 0, width, height, GLES20.GL_RGBA, GLES20.GL_UNSIGNED_BYTE, bb);
+        int pixelsBuffer[] = new int[screenshotSize];
+        bb.asIntBuffer().get(pixelsBuffer);
+        bb = null;
+
+        for (int i = 0; i < screenshotSize; ++i) {
+            pixelsBuffer[i] = ((pixelsBuffer[i] & 0xff00ff00)) |    ((pixelsBuffer[i] & 0x000000ff) << 16) | ((pixelsBuffer[i] & 0x00ff0000) >> 16);
+        }
+
+        savedPicture = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        savedPicture.setPixels(pixelsBuffer, screenshotSize-width, -width, 0, 0, width, height);
+
+    }
+
+
+
+
 
 }
