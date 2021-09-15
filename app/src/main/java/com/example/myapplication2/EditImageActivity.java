@@ -91,8 +91,8 @@ public class EditImageActivity extends AppCompatActivity {
             skbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                    System.out.println("in color");
                     editParameters.setColor(seekBar.getProgress());
+                    System.out.println(editParameters.getColor() + "  " + editParameters.getAngle());
                 }
 
                 @Override
@@ -105,7 +105,6 @@ public class EditImageActivity extends AppCompatActivity {
 
                 }
             });
-            skbar.setProgress(0);
         });
         angleButton.setOnClickListener(ib -> {
             //For changing visibility
@@ -117,8 +116,8 @@ public class EditImageActivity extends AppCompatActivity {
             skbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                    System.out.println("in angle");
                     editParameters.setAngle(seekBar.getProgress());
+                    System.out.println(editParameters.getColor() + "  " + editParameters.getAngle());
                 }
 
                 @Override
@@ -132,7 +131,6 @@ public class EditImageActivity extends AppCompatActivity {
                 }
 
             });
-            skbar.setProgress(0);
         });
 
     }
