@@ -52,7 +52,7 @@ public class TextureHelper {
 
         // Recycle the bitmap, since its data has been loaded into
         // OpenGL.
-        pic.recycle();
+//        pic.recycle();
 
         // Unbind from the texture.
         glBindTexture(GL_TEXTURE_2D, id);

@@ -7,8 +7,10 @@ import android.content.pm.ConfigurationInfo;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -29,6 +31,7 @@ public class EditImageActivity extends AppCompatActivity {
     public static final int PINK = 0xFFF15ECF;
     MenuItem menuItem;
     private GLSurfaceView gLView;
+    PictureRenderer renderer;
     public EditParameters editParameters = new EditParameters(0.0, 0.0);
 
 
@@ -148,10 +151,11 @@ public class EditImageActivity extends AppCompatActivity {
 
     public void openShare(MenuItem item) {
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-        sharingIntent.setType("text/plain");
-        String shareBody = "Here is the share content body";
-        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
-        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        String pathofBmp = MediaStore.Images.Media.insertImage(getContentResolver(), renderer.savedPicture  ,"title", null);
+        Uri bmpUri = Uri.parse(pathofBmp);
+        sharingIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        sharingIntent.putExtra(Intent.EXTRA_STREAM, bmpUri);
+        sharingIntent.setType("image/png");
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
 
@@ -173,7 +177,7 @@ public class EditImageActivity extends AppCompatActivity {
         if (supportsEs2) {
             gLView = (GLSurfaceView) this.findViewById(R.id.check);
             gLView.setEGLContextClientVersion(2);
-            PictureRenderer renderer = new PictureRenderer(getApplicationContext());
+            renderer = new PictureRenderer(getApplicationContext());
             renderer.pic = picture;
             gLView.setRenderer(renderer);
         }

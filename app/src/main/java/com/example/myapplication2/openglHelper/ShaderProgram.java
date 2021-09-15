@@ -10,9 +10,11 @@ abstract class ShaderProgram {
     // Uniform constants
     protected static final String U_MATRIX = "u_Matrix";
     protected static final String U_TEXTURE_UNIT = "u_TextureUnit";
+    protected static final String U_OPACITY = "u_Opacity";
 
     // Attribute constants
     protected static final String A_POSITION = "a_Position";
+    protected static final String A_OPACITY = "a_Opacity";
     protected static final String A_TEXTURE_COORDINATES = "a_TextureCoordinates";
 
     // Shader program
