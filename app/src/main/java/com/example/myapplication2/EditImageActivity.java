@@ -29,11 +29,20 @@ import java.util.Objects;
 
 public class EditImageActivity extends AppCompatActivity {
     public static final int PINK = 0xFFF15ECF;
-    MenuItem menuItem;
-    private GLSurfaceView gLView;
-    PictureRenderer renderer;
-    public EditParameters editParameters = new EditParameters(0.0, 0.0);
+    public final String COLOR = "COLOR";
+    public final String ANGLE = "ANGLE";
+    public final String SPREAD = "SPREAD";
 
+    PictureRenderer renderer;
+    EditParameters currentParameters = new EditParameters(0.0, 0.0);
+    EditParameters lastSavedParameters = new EditParameters(0.0, 0.0);
+    ImageButton colorButton;
+    ImageButton angleButton;
+    ImageButton spreadButton;
+    ImageButton xBox;
+    ImageButton checkBox;
+    SeekBar colorSeekBar;
+    SeekBar angleSeekBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,97 +51,115 @@ public class EditImageActivity extends AppCompatActivity {
         setContentView(R.layout.edit_photo_page);
         setActionBar();
 
-        SeekBar skbar = findViewById(R.id.seekBar);
-        skbar.setProgressTintList(ColorStateList.valueOf(PINK));
+        initializedAllButtonsAndSkBars();
 
-        ImageButton colorButton = findViewById(R.id.colorButton);
-        ImageButton angleButton = findViewById(R.id.angleButton);
-        ImageButton spreadButton = findViewById(R.id.spreadButton);
-        ImageButton xBox = findViewById(R.id.xBox);
-        ImageButton checkBox = findViewById(R.id.checkBox);
-
-        xBox.setVisibility(View.GONE);
-        checkBox.setVisibility(View.GONE);
-
-        skbar.setVisibility(View.GONE);
-        showSeekBar(skbar, colorButton, angleButton, spreadButton, xBox, checkBox);
-
-        xBox.setOnClickListener(ib -> {
-            backToEditClick(skbar, colorButton, angleButton, spreadButton, xBox, checkBox);
-        });
-
-        checkBox.setOnClickListener(ib -> {
-            backToEditClick(skbar, colorButton, angleButton, spreadButton, xBox, checkBox);
-        });
+        showSeekBar();
+        clickOnBox();
 
         openImageWithOpenGl();
+    }
 
+    public void initializedAllButtonsAndSkBars() {
+        colorSeekBar = findViewById(R.id.colorSkBar);
+        colorSeekBar.setProgressTintList(ColorStateList.valueOf(PINK));
+        colorSeekBar.setVisibility(View.GONE);
+        angleSeekBar = findViewById(R.id.angleSkBar);
+        angleSeekBar.setProgressTintList(ColorStateList.valueOf(PINK));
+        angleSeekBar.setVisibility(View.GONE);
+
+        colorButton = findViewById(R.id.colorButton);
+        angleButton = findViewById(R.id.angleButton);
+        spreadButton = findViewById(R.id.spreadButton);
+
+        xBox = findViewById(R.id.xBox);
+        xBox.setVisibility(View.GONE);
+        checkBox = findViewById(R.id.checkBox);
+        checkBox.setVisibility(View.GONE);
 
     }
 
-    public void backToEditClick(SeekBar skbar, ImageButton colorButton, ImageButton angleButton, ImageButton spreadButton, ImageButton xBox, ImageButton checkBox) {
-        skbar.setVisibility(View.GONE);
+    public void clickOnBox() {
+        xBox.setOnClickListener(ib -> {
+            hideSeekBars();
+            currentParameters.setColor(lastSavedParameters.getColor());
+            currentParameters.setAngle(lastSavedParameters.getAngle());
+            colorSeekBar.setProgress((int) lastSavedParameters.getColor());
+            angleSeekBar.setProgress((int) lastSavedParameters.getAngle());
+            System.out.println("current  " + currentParameters.getColor() + "  " + currentParameters.getAngle());
+            System.out.println("lastsaved  " + lastSavedParameters.getColor() + "  " + lastSavedParameters.getAngle());
+        });
+        checkBox.setOnClickListener(ib -> {
+            hideSeekBars();
+            lastSavedParameters.setColor(currentParameters.getColor());
+            lastSavedParameters.setAngle(currentParameters.getAngle());
+            System.out.println("current  " + currentParameters.getColor() + "  " + currentParameters.getAngle());
+            System.out.println("lastsaved  " + lastSavedParameters.getColor() + "  " + lastSavedParameters.getAngle());
+        });
+    }
+
+    //Prevent from going to processing layout
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+    }
+
+    public void hideSeekBars() {
+        colorSeekBar.setVisibility(View.GONE);
+        angleSeekBar.setVisibility(View.GONE);
         xBox.setVisibility(View.GONE);
         checkBox.setVisibility(View.GONE);
         colorButton.setVisibility(View.VISIBLE);
         angleButton.setVisibility(View.VISIBLE);
         spreadButton.setVisibility(View.VISIBLE);
-        System.out.println(editParameters.getColor() + "  " + editParameters.getAngle());
     }
 
-    public void showSeekBar(SeekBar skbar, ImageButton colorButton, ImageButton angleButton, ImageButton spreadButton, ImageButton xBox, ImageButton checkBox) {
-        colorButton.setOnClickListener(ib -> {
-            angleButton.setVisibility(View.GONE);
-            spreadButton.setVisibility(View.GONE);
-            skbar.setVisibility(View.VISIBLE);
-            xBox.setVisibility(View.VISIBLE);
-            checkBox.setVisibility(View.VISIBLE);
+    public void showSeekBars(String buttonName) {
+        angleButton.setVisibility(!buttonName.equals(ANGLE) ? View.GONE : View.VISIBLE);
+        spreadButton.setVisibility(!buttonName.equals(SPREAD) ? View.GONE : View.VISIBLE);
+        colorButton.setVisibility(!buttonName.equals(COLOR) ? View.GONE : View.VISIBLE);
+        colorSeekBar.setVisibility(buttonName.equals(COLOR) ? View.VISIBLE : View.GONE);
+        angleSeekBar.setVisibility(buttonName.equals(ANGLE) ? View.VISIBLE : View.GONE);
+        xBox.setVisibility(View.VISIBLE);
+        checkBox.setVisibility(View.VISIBLE);
+    }
 
-            skbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+    public void showSeekBar() {
+        colorButton.setOnClickListener(ib -> {
+            showSeekBars(COLOR);
+            colorSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                    editParameters.setColor(seekBar.getProgress());
-                    System.out.println(editParameters.getColor() + "  " + editParameters.getAngle());
+                    currentParameters.setColor(seekBar.getProgress());
                 }
 
                 @Override
                 public void onStartTrackingTouch(SeekBar seekBar) {
-
+                    currentParameters.setColor(seekBar.getProgress());
                 }
 
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
-
                 }
             });
         });
         angleButton.setOnClickListener(ib -> {
-            //For changing visibility
-            colorButton.setVisibility(View.GONE);
-            spreadButton.setVisibility(View.GONE);
-            skbar.setVisibility(View.VISIBLE);
-            xBox.setVisibility(View.VISIBLE);
-            checkBox.setVisibility(View.VISIBLE);
-            skbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            showSeekBars(ANGLE);
+            angleSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                    editParameters.setAngle(seekBar.getProgress());
-                    System.out.println(editParameters.getColor() + "  " + editParameters.getAngle());
+                    currentParameters.setAngle(seekBar.getProgress());
                 }
 
                 @Override
                 public void onStartTrackingTouch(SeekBar seekBar) {
-
                 }
 
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
-
                 }
-
             });
         });
-
     }
 
     public void setActionBar() {
@@ -149,8 +176,8 @@ public class EditImageActivity extends AppCompatActivity {
 
     public void openShare(MenuItem item) {
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-        String pathofBmp = MediaStore.Images.Media.insertImage(getContentResolver(), renderer.savedPicture  ,"title", null);
-        Uri bmpUri = Uri.parse(pathofBmp);
+        String pathOfBmp = MediaStore.Images.Media.insertImage(getContentResolver(), renderer.savedPicture, "title", null);
+        Uri bmpUri = Uri.parse(pathOfBmp);
         sharingIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         sharingIntent.putExtra(Intent.EXTRA_STREAM, bmpUri);
         sharingIntent.setType("image/png");
@@ -173,7 +200,7 @@ public class EditImageActivity extends AppCompatActivity {
         Bitmap picture = BitmapFactory.decodeFile(file.getAbsolutePath());
 
         if (supportsEs2) {
-            gLView = (GLSurfaceView) this.findViewById(R.id.check);
+            GLSurfaceView gLView = this.findViewById(R.id.check);
             gLView.setEGLContextClientVersion(2);
             renderer = new PictureRenderer(getApplicationContext());
             renderer.pic = picture;

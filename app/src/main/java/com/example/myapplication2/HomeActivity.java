@@ -44,13 +44,12 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-    public void openEditPage(Bitmap pic) {
-        Intent intent = new Intent(this, EditImageActivity.class);
+    public void openSegmentationPage(Bitmap pic){
+        Intent intent = new Intent(this, SegmentationActivity.class);
         String filePath = tempFileImage(this, pic, "tempImage");
         intent.putExtra("path", filePath);
         startActivity(intent);
     }
-
 
     public static String tempFileImage(Context context, Bitmap bitmap, String name) {
 
@@ -84,7 +83,7 @@ public class HomeActivity extends AppCompatActivity {
             Bitmap bitmap;
             try {
                 bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(selectedImage));
-                openEditPage(bitmap);
+                openSegmentationPage(bitmap);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }

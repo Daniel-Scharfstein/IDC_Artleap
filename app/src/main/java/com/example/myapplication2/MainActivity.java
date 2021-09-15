@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //Method to run progress bar for 5 seconds
+    //Method to run progress bar for 2 seconds
     private void playProgress() {
         ObjectAnimator.ofInt(splashProgress, "progress", 100)
                 .setDuration(2000)
@@ -48,7 +48,5 @@ public class MainActivity extends AppCompatActivity {
         // TODO Auto-generated method stub
         Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_USE_LOGO);
         getSupportActionBar().setCustomView(R.layout.action_bar);
-
     }
-
 }

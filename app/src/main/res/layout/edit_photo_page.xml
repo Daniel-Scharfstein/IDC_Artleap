@@ -9,7 +9,24 @@
     tools:context=".EditImageActivity">
 
     <SeekBar
-        android:id="@+id/seekBar"
+        android:id="@+id/colorSkBar"
+        android:layout_width="159dp"
+        android:layout_height="48dp"
+        android:layerType="none"
+        android:progressBackgroundTint="@color/white"
+        android:splitTrack="false"
+        android:thumb="@drawable/white_thumb"
+        android:thumbTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.767"
+        tools:ignore="MissingConstraints" />
+
+    <SeekBar
+        android:id="@+id/angleSkBar"
         android:layout_width="159dp"
         android:layout_height="48dp"
         android:layerType="none"
@@ -106,7 +123,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.633"
-        app:layout_constraintStart_toEndOf="@+id/seekBar"
+        app:layout_constraintStart_toEndOf="@+id/colorSkBar"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.733"
         app:srcCompat="@drawable/check_box" />
@@ -118,7 +135,7 @@
         android:layout_marginStart="16dp"
         android:background="#141416"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/seekBar"
+        app:layout_constraintEnd_toStartOf="@+id/colorSkBar"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
