@@ -80,7 +80,7 @@ public class SegmentationActivity extends AppCompatActivity {
         for (int i = 0; i < maskWidth * maskHeight; i++) {
             float backgroundLikelihood = 1 - byteBuffer.getFloat();
             if (backgroundLikelihood > 0.9) {
-                colors[i] = Color.argb(128, 255, 0, 255);
+                colors[i] = Color.argb(128, 255, 255, 255);
             } else {
                 colors[i] = Color.argb(128, 100, 0, 100);
             }
@@ -93,7 +93,7 @@ public class SegmentationActivity extends AppCompatActivity {
         bitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
         for (int x = 0; x < bitmap.getWidth(); x++) {
             for (int y = 0; y < bitmap.getHeight(); y++) {
-                if (bitmap.getPixel(x, y) == Color.argb(128, 255, 0, 255)) {
+                if (bitmap.getPixel(x, y) == Color.argb(128, 255, 255, 255)) {
                     bitmap.setPixel(x, y, Color.TRANSPARENT);
                 } else {
                     bitmap.setPixel(x, y, image.getPixel(x, y));

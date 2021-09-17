@@ -8,6 +8,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.opengl.GLES10;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -27,6 +28,8 @@ import com.example.myapplication2.utils.EditParameters;
 import java.io.File;
 import java.util.Objects;
 
+import javax.microedition.khronos.opengles.GL10;
+
 public class EditImageActivity extends AppCompatActivity {
     public static final int PINK = 0xFFF15ECF;
     public final String COLOR = "COLOR";
@@ -34,7 +37,7 @@ public class EditImageActivity extends AppCompatActivity {
     public final String SPREAD = "SPREAD";
 
     PictureRenderer renderer;
-    EditParameters currentParameters = new EditParameters(0.0, 0.0);
+    EditParameters currentParameters = new EditParameters(0.0, 0.5);
     EditParameters lastSavedParameters = new EditParameters(0.0, 0.0);
     ImageButton colorButton;
     ImageButton angleButton;
@@ -125,17 +128,24 @@ public class EditImageActivity extends AppCompatActivity {
     }
 
     public void showSeekBar() {
+        int width = 1048;
+        int height = 1015;
         colorButton.setOnClickListener(ib -> {
             showSeekBars(COLOR);
             colorSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                     currentParameters.setColor(seekBar.getProgress());
+                    renderer.currentParameters = currentParameters;
+                    renderer.onSurfaceChanged(null, width, height);
                 }
 
                 @Override
                 public void onStartTrackingTouch(SeekBar seekBar) {
                     currentParameters.setColor(seekBar.getProgress());
+                    renderer.currentParameters = currentParameters;
+                    renderer.onSurfaceChanged(null, width, height);
+                    renderer.onDrawFrame(null);
                 }
 
                 @Override
@@ -149,6 +159,9 @@ public class EditImageActivity extends AppCompatActivity {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                     currentParameters.setAngle(seekBar.getProgress());
+                    renderer.currentParameters = currentParameters;
+                    renderer.onSurfaceChanged(null, width, height);
+                    renderer.onDrawFrame(null);
                 }
 
                 @Override

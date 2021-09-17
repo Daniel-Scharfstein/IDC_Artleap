@@ -4,6 +4,7 @@ public class EditParameters {
     double color;
     double angle;
 
+
     public EditParameters(double color, double angle) {
         setColor(color);
         setAngle(angle);
@@ -22,6 +23,6 @@ public class EditParameters {
     }
 
     public void setAngle(double angle) {
-        this.angle = angle;
+        this.angle = angle/100.0;
     }
 }
