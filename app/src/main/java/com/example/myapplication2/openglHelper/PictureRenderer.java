@@ -28,6 +28,7 @@ import android.renderscript.Matrix4f;
 
 import com.example.myapplication2.EditImageActivity;
 import com.example.myapplication2.R;
+import com.example.myapplication2.utils.EditParameters;
 import com.example.myapplication2.utils.MatrixHelper;
 import com.example.myapplication2.utils.TextResourceReader;
 
@@ -39,27 +40,23 @@ import java.nio.IntBuffer;
 public class PictureRenderer implements Renderer {
     private final Context context;
 
+    private float[] opacity = {(float) 1, (float) 0.2, (float) 0.4};
 
-    private final Matrix4f matrix = new Matrix4f();
-    private final Matrix4f matrix2 = new Matrix4f();
+    private final Matrix4f[] matrix = new Matrix4f[3];
+    private Picture[] pictures = new Picture[3];
 
-    private Picture picture;
-    private Picture picture2;
     public Bitmap pic;
     public Bitmap savedPicture;
 
-
-
-
-
-    private TextureShaderProgram textureProgram;
-    private TextureShaderProgram textureProgram2;
+    private TextureShaderProgram[] textureShaderPrograms = new TextureShaderProgram[3];
 
     private int checkWidth;
     private int checkHeight;
 
-    private int texture;
-    private int texture2;
+    private int[] texture = new int[3];
+
+    public EditParameters currentParameters = new EditParameters(0.5f, 0.5f);
+
 
 
     public PictureRenderer(Context context) {
@@ -70,20 +67,14 @@ public class PictureRenderer implements Renderer {
     public void onSurfaceCreated(GL10 glUnused, EGLConfig config) {
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
-        Bitmap mock =  BitmapFactory.decodeResource(context.getResources(),
-                R.drawable.mock_ido);
+        TextureHelper.setTextureHandle(4);
 
-        picture = new Picture();
-        picture2 = new Picture();
-
-        TextureHelper.setTextureHandle(2);
-
-        textureProgram = new TextureShaderProgram(context);
-        textureProgram2 = new TextureShaderProgram(context);
-
-
-        texture = TextureHelper.loadTexture(pic,0);
-        texture2 = TextureHelper.loadTexture(pic,1);
+        for (int i=0; i < 3; i++){
+            pictures[i] = new Picture();
+            textureShaderPrograms[i] = new TextureShaderProgram(context);
+            texture[i] = TextureHelper.loadTexture(pic, i);
+            matrix[i] = new Matrix4f();
+        }
 
     }
 
@@ -91,8 +82,14 @@ public class PictureRenderer implements Renderer {
     public void onSurfaceChanged(GL10 glUnused, int width, int height) {
         // Set the OpenGL viewport to fill the entire surface.
         glViewport(0, 0, width, height);
-        setPictureScale(width, height);
-        movePicture(0.5f,0);
+
+//        for (int i=0; i < 3; i++) {
+//            setPictureScale(width, height, matrix[i]);
+//        }
+
+
+       movePicture((float) currentParameters.getAngle(),0, matrix[1]);
+        movePicture(-(float) currentParameters.getAngle(),0, matrix[2]);
 
         checkWidth = width;
         checkHeight = height;
@@ -103,30 +100,21 @@ public class PictureRenderer implements Renderer {
         // Clear the rendering surface.
         glClear(GL_COLOR_BUFFER_BIT);
 
-
-        textureProgram2.useProgram();
-        textureProgram2.setUniforms(matrix2.getArray(), texture2, 1f);
-        picture2.bindData(textureProgram2);
-        picture2.draw();
-
         glEnable( GL_BLEND );
         glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
 
-        // Draw the table.
-        textureProgram.useProgram();
-        textureProgram.setUniforms(matrix.getArray(), texture, 0.5f);
-        picture.bindData(textureProgram);
-        picture.draw();
+        for (int i=0; i < 3; i++) {
+            textureShaderPrograms[i].useProgram();
+            textureShaderPrograms[i].setUniforms(matrix[i].getArray(), texture[i], opacity[i]);
+            pictures[i].bindData(textureShaderPrograms[i]);
+            pictures[i].draw();
+        }
 
         saveChanges(checkWidth, checkHeight);
 
-
-
-
-
     }
 
-    private void setPictureScale(int viewWidth, int viewHeight){
+    private void setPictureScale(int viewWidth, int viewHeight, Matrix4f matrix){
 
         final float aspectRatio = viewWidth > viewHeight ?
                 (float) viewWidth / (float) viewHeight :
@@ -139,7 +127,7 @@ public class PictureRenderer implements Renderer {
 
     }
 
-    private void movePicture(float x, float y){
+    private void movePicture(float x, float y, Matrix4f matrix){
         matrix.loadTranslate(x,y,0);
     }
 
@@ -160,9 +148,5 @@ public class PictureRenderer implements Renderer {
         savedPicture.setPixels(pixelsBuffer, screenshotSize-width, -width, 0, 0, width, height);
 
     }
-
-
-
-
 
 }
