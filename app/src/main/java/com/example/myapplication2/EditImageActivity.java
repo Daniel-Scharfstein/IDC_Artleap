@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 
@@ -36,9 +37,9 @@ public class EditImageActivity extends AppCompatActivity {
     PictureRenderer renderer;
     EditParameters currentParameters = new EditParameters(0.0, 0.0);
     EditParameters lastSavedParameters = new EditParameters(0.0, 0.0);
-    ImageButton colorButton;
-    ImageButton angleButton;
-    ImageButton spreadButton;
+    Button colorButton;
+    Button angleButton;
+    Button spreadButton;
     ImageButton xBox;
     ImageButton checkBox;
     SeekBar colorSeekBar;

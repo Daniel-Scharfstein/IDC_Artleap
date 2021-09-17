@@ -42,49 +42,63 @@
         app:layout_constraintVertical_bias="0.767"
         tools:ignore="MissingConstraints" />
 
-    <ImageButton
+    <Button
         android:id="@+id/colorButton"
         android:layout_width="72dp"
         android:layout_height="71dp"
         android:background="#141416"
-        android:src="@drawable/color_edit_small"
+        android:drawableTop="@drawable/color"
+        android:text="color"
+        android:textSize="10sp"
+        android:textColor="#A9AAA5"
+        android:fontFamily="sans-serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.91"
+        style="?android:attr/borderlessButtonStyle"
         tools:ignore="ContentDescription,MissingConstraints,ImageContrastCheck,SpeakableTextPresentCheck" />
 
-    <ImageButton
+    <Button
         android:id="@+id/spreadButton"
         android:layout_width="72dp"
         android:layout_height="71dp"
         android:background="#141416"
-        android:src="@drawable/spread_bar_edit"
+        android:drawableTop="@drawable/spread"
+        android:text="Spread"
+        android:textSize="10sp"
+        android:textColor="#A9AAA5"
+        android:fontFamily="sans-serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.879"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.907"
+        style="?android:attr/borderlessButtonStyle"
         tools:ignore="ContentDescription,MissingConstraints,ImageContrastCheck,ImageContrastCheck,SpeakableTextPresentCheck" />
 
-    <ImageButton
+    <!--    app:srcCompat="@drawable/mock_ido"-->
+
+    <Button
         android:id="@+id/angleButton"
-        android:layout_width="72dp"
-        android:layout_height="71dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="92dp"
+        android:layout_height="78dp"
         android:background="#141416"
-        android:src="@drawable/angle_bar_edit"
+        android:drawableTop="@drawable/angle_bar_edit"
+        android:fontFamily="sans-serif"
+        android:text="Angle"
+        android:textColor="#A9AAA5"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.907"
+        app:layout_constraintVertical_bias="0.915"
         tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
-
-    <!--    app:srcCompat="@drawable/mock_ido"-->
 
     <android.opengl.GLSurfaceView
         android:id="@+id/check"

@@ -56,7 +56,7 @@ public class SegmentationActivity extends AppCompatActivity {
 
                                         Bitmap processBitMap =
                                                 Bitmap.createBitmap(
-                                                        maskColorsFromByteBuffer(maskBuffer, maskWidth, maskHeight, bitmap), maskWidth, maskHeight, Bitmap.Config.ARGB_8888);
+                                                        maskColorsFromByteBuffer(maskBuffer, maskWidth, maskHeight), maskWidth, maskHeight, Bitmap.Config.ARGB_8888);
                                         Bitmap testBitmap = colorBitmap(processBitMap, bitmap);
                                         openEditPage(testBitmap);
                                     }
@@ -70,32 +70,33 @@ public class SegmentationActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
     /**
      * Converts byteBuffer floats to ColorInt array that can be used as a mask.
      */
     @ColorInt
-    private int[] maskColorsFromByteBuffer(ByteBuffer byteBuffer, int maskWidth, int maskHeight, Bitmap image) {
+    private int[] maskColorsFromByteBuffer(ByteBuffer byteBuffer, int maskWidth, int maskHeight) {
         @ColorInt int[] colors = new int[maskWidth * maskHeight];
         for (int i = 0; i < maskWidth * maskHeight; i++) {
             float backgroundLikelihood = 1 - byteBuffer.getFloat();
             if (backgroundLikelihood > 0.9) {
-                colors[i] = Color.argb(128, 255, 0, 255);
+                colors[i] = Color.TRANSPARENT;
+            } else if (backgroundLikelihood > 0.65) {
+                // Linear interpolation to make sure when backgroundLikelihood is 0.2, the alpha is 0 and
+                // when backgroundLikelihood is 0.9, the alpha is 128.
+                // +0.5 to round the float value to the nearest int.
+                colors[i] = Color.TRANSPARENT;
             } else {
-                colors[i] = Color.argb(128, 100, 0, 100);
+                colors[i] = Color.WHITE;
             }
         }
         return colors;
     }
 
     private Bitmap colorBitmap(Bitmap bitmap, Bitmap image) {
-        image = image.copy(Bitmap.Config.ARGB_8888, true);
         bitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
         for (int x = 0; x < bitmap.getWidth(); x++) {
             for (int y = 0; y < bitmap.getHeight(); y++) {
-                if (bitmap.getPixel(x, y) == Color.argb(128, 255, 0, 255)) {
-                    bitmap.setPixel(x, y, Color.TRANSPARENT);
-                } else {
+                if (bitmap.getPixel(x, y) == Color.WHITE) {
                     bitmap.setPixel(x, y, image.getPixel(x, y));
                 }
             }
