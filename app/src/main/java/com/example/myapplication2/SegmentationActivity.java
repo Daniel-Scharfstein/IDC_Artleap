@@ -80,7 +80,7 @@ public class SegmentationActivity extends AppCompatActivity {
             float backgroundLikelihood = 1 - byteBuffer.getFloat();
             if (backgroundLikelihood > 0.9) {
                 colors[i] = Color.TRANSPARENT;
-            } else if (backgroundLikelihood > 0.65) {
+            } else if (backgroundLikelihood > 0.2) {
                 // Linear interpolation to make sure when backgroundLikelihood is 0.2, the alpha is 0 and
                 // when backgroundLikelihood is 0.9, the alpha is 128.
                 // +0.5 to round the float value to the nearest int.

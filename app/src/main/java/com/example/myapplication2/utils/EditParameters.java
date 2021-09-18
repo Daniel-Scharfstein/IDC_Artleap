@@ -23,6 +23,6 @@ public class EditParameters {
     }
 
     public void setAngle(double angle) {
-        this.angle = angle/100.0;
+        this.angle = angle;
     }
 }
