@@ -10,6 +10,9 @@ public class TextureShaderProgram extends ShaderProgram {
     private final int uMatrix;
     private final int uTextureUnitLocation;
     private final int uOpacity;
+    private final int uColor;
+    private final int uId;
+
 
 
     // Attribute locations
@@ -28,11 +31,14 @@ public class TextureShaderProgram extends ShaderProgram {
         aPositionLocation = GLES20.glGetAttribLocation(program, A_POSITION);
         aTextureCoordinatesLocation =
                 GLES20.glGetAttribLocation(program, A_TEXTURE_COORDINATES);
-
         uOpacity =  GLES20.glGetUniformLocation(program, U_OPACITY);
+        uColor =  GLES20.glGetUniformLocation(program, U_COLOR);
+
+        uId =  GLES20.glGetUniformLocation(program, U_ID);
+
     }
 
-    public void setUniforms(float[] matrix, int textureId, float opacity) {
+    public void setUniforms(float[] matrix, int textureId, float opacity , float color) {
         // Pass the matrix into the shader program.
         GLES20.glUniformMatrix4fv(uMatrix, 1, false, matrix, 0);
 
@@ -45,8 +51,11 @@ public class TextureShaderProgram extends ShaderProgram {
         // Tell the texture uniform sampler to use this texture in the shader by
         // telling it to read from texture unit 0.
         GLES20.glUniform1i(uTextureUnitLocation, 0);
-
+        GLES20.glUniform1f(uColor, color);
+        GLES20.glUniform1f(uId, (float) textureId);
         GLES20.glUniform1f(uOpacity, opacity);
+
+
     }
 
     public int getPositionAttributeLocation() {
