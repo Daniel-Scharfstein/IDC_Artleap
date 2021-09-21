@@ -1,6 +1,5 @@
 precision mediump float;
 uniform sampler2D u_TextureUnit;
-//uniform sampler2D u_TextureUnit2;
 varying float v_Opacity;
 varying vec2 v_TextureCoordinates;
 varying float v_Color;
@@ -22,12 +21,12 @@ void main()
     texture.a = v_Opacity;
 
     if(v_Id == 2.0){
-//        red = v_Color * vec4(1,1,1,0);
+        red.g = v_Color;
         gl_FragColor =  red * texture;
         return;
     }
     else if(v_Id == 3.0){
-//        blue = v_Color * vec4(1,1,1,0);
+        blue.r = v_Color;
         gl_FragColor = blue * texture;
         return;
     }

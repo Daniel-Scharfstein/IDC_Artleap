@@ -54,7 +54,7 @@ public class PictureRenderer implements Renderer {
 
     private int[] texture = new int[3];
 
-    public EditParameters currentParameters = new EditParameters(1f, 0.5f);
+    public EditParameters currentParameters = new EditParameters(0f, 0.5f);
 
 
     public PictureRenderer(Context context) {
