@@ -84,7 +84,7 @@ public class SegmentationActivity extends AppCompatActivity {
                 // Linear interpolation to make sure when backgroundLikelihood is 0.2, the alpha is 0 and
                 // when backgroundLikelihood is 0.9, the alpha is 128.
                 // +0.5 to round the float value to the nearest int.
-                colors[i] = Color.TRANSPARENT;
+                colors[i] = Color.argb(128,0,0,0);
             } else {
                 colors[i] = Color.WHITE;
             }

@@ -40,8 +40,7 @@ import java.nio.IntBuffer;
 public class PictureRenderer implements Renderer {
     private final Context context;
 
-    private float[] opacity = {(float) 1, (float) 0.2, (float) 0.4};
-
+    private float[] opacity = {(float) 1, (float) 0.4, (float) 0.6};
     private final Matrix4f[] matrix = new Matrix4f[3];
     private Picture[] pictures = new Picture[3];
 
@@ -55,8 +54,7 @@ public class PictureRenderer implements Renderer {
 
     private int[] texture = new int[3];
 
-    public EditParameters currentParameters = new EditParameters(0.5f, 0.5f);
-
+    public EditParameters currentParameters = new EditParameters(1f, 0.5f);
 
 
     public PictureRenderer(Context context) {
@@ -105,7 +103,7 @@ public class PictureRenderer implements Renderer {
 
         for (int i=0; i < 3; i++) {
             textureShaderPrograms[i].useProgram();
-            textureShaderPrograms[i].setUniforms(matrix[i].getArray(), texture[i], opacity[i]);
+            textureShaderPrograms[i].setUniforms(matrix[i].getArray(), texture[i], opacity[i], (float) currentParameters.getColor());
             pictures[i].bindData(textureShaderPrograms[i]);
             pictures[i].draw();
         }
