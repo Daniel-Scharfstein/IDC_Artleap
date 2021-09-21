@@ -1,5 +1,7 @@
 package com.example.myapplication2;
 
+import static android.content.Intent.EXTRA_SUBJECT;
+
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -21,7 +23,9 @@ import java.io.OutputStream;
 import java.util.Objects;
 
 public class HomeActivity extends AppCompatActivity {
-    ImageView imageButton;
+    ImageView splitColorsTemplateImage;
+    ImageView filtersTemplateImage;
+    public String selectedTemplate;
     private static int RESULT_LOAD_IMAGE = 1;
 
     @Override
@@ -35,19 +39,32 @@ public class HomeActivity extends AppCompatActivity {
 
     public void addListenerOnTemplateImage() {
 
-        imageButton = findViewById(R.id.imageView13);
-        imageButton.setOnClickListener(arg0 -> {
+        splitColorsTemplateImage = findViewById(R.id.imageView13);
+        splitColorsTemplateImage.setOnClickListener(arg0 -> {
+            selectedTemplate = "splitColors";
             Intent i = new Intent(
                     Intent.ACTION_PICK,
                     MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            i.putExtra(EXTRA_SUBJECT, "splitColors");
+            startActivityForResult(i, RESULT_LOAD_IMAGE);
+        });
+
+        filtersTemplateImage = findViewById(R.id.filters);
+        filtersTemplateImage.setOnClickListener(arg0 -> {
+            selectedTemplate = "filters";
+            Intent i = new Intent(
+                    Intent.ACTION_PICK,
+                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            i.putExtra(EXTRA_SUBJECT, "filters");
             startActivityForResult(i, RESULT_LOAD_IMAGE);
         });
     }
 
-    public void openSegmentationPage(Bitmap pic){
+    public void openSegmentationPage(Bitmap pic) {
         Intent intent = new Intent(this, SegmentationActivity.class);
         String filePath = tempFileImage(this, pic, "tempImage");
         intent.putExtra("path", filePath);
+        intent.putExtra("template", selectedTemplate);
         startActivity(intent);
     }
 

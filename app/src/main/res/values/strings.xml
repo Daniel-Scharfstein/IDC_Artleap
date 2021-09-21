@@ -11,6 +11,8 @@
     <string name="Kaleido_desc">"    Kaleido the background behind any subject!"</string>
     <string name="Lensball_Title">"   Lensball"</string>
     <string name="Lensball_desc">"    Stand-out with stunning reflections."</string>
+    <string name="color">color</string>
+    <string name="spread">Spread</string>
 
 
 </resources>

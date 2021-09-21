@@ -24,6 +24,7 @@
                 android:layout_height="280dp"
                 android:layout_weight="1"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:srcCompat="@drawable/split_color"
                 tools:ignore="MissingConstraints"
@@ -39,8 +40,8 @@
                 android:textAlignment="viewStart"
                 android:textAppearance="@style/TextAppearance.Compat.Notification"
                 android:textColor="#b8b7bb"
-                android:textStyle="bold"
                 android:textSize="14sp"
+                android:textStyle="bold"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="@+id/imageView13"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -66,17 +67,67 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
             <ImageView
+                android:id="@+id/filters"
+                android:layout_width="280dp"
+                android:layout_height="280dp"
+                android:layout_weight="1"
+                app:layout_constraintBottom_toTopOf="@+id/imageView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4"
+                app:layout_constraintVertical_bias="0.465"
+                app:srcCompat="@drawable/filters"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/filtersTitle"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:background="#201f24"
+                android:fontFamily="@font/brown_ll_medium"
+                android:text="@string/split_colors_Title"
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/TextAppearance.Compat.Notification"
+                android:textColor="#b8b7bb"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="@+id/filters"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/filters"
+                app:layout_constraintTop_toBottomOf="@+id/filters" />
+
+            <TextView
+                android:id="@+id/filtersDesc"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="-3dp"
+                android:background="@drawable/rounded_corner_style"
+                android:fontFamily="@font/brown_ll_regular"
+                android:text="@string/color_split_desc"
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/TextAppearance.Compat.Notification"
+                android:textColor="#b8b7bb"
+                android:textSize="12dp"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="@+id/filtersTitle"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/filtersTitle"
+                app:layout_constraintTop_toBottomOf="@+id/filtersTitle" />
+
+            <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="271dp"
                 android:layout_height="270dp"
-                android:layout_marginTop="44dp"
+                android:layout_marginTop="408dp"
                 android:layout_weight="1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.504"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView5"
                 app:srcCompat="@drawable/kaleido_drop"
                 tools:ignore="MissingConstraints" />
+
 
             <TextView
                 android:id="@+id/title2"
@@ -85,10 +136,10 @@
                 android:background="#201f24"
                 android:fontFamily="@font/brown_ll_medium"
                 android:text="@string/KaleidoDrop_Title"
-                android:textSize="14sp"
                 android:textAlignment="viewStart"
                 android:textAppearance="@style/TextAppearance.Compat.Notification"
                 android:textColor="#b8b7bb"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="@+id/imageView2"
@@ -114,6 +165,7 @@
                 app:layout_constraintStart_toStartOf="@+id/title2"
                 app:layout_constraintTop_toBottomOf="@+id/title2" />
 
+
             <ImageView
                 android:id="@+id/lensImage"
                 android:layout_width="280dp"
@@ -121,7 +173,7 @@
                 android:layout_marginTop="44dp"
                 android:layout_weight="1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.504"
+                app:layout_constraintHorizontal_bias="0.486"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/desc2"
                 app:srcCompat="@drawable/lensball"
@@ -135,9 +187,9 @@
                 android:fontFamily="@font/brown_ll_medium"
                 android:text="@string/Lensball_Title"
                 android:textAlignment="viewStart"
-                android:textSize="14sp"
                 android:textAppearance="@style/TextAppearance.Compat.Notification"
                 android:textColor="#b8b7bb"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="@+id/lensImage"

@@ -8,7 +8,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.ProgressBar;
 
 import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,11 +25,14 @@ import java.nio.ByteBuffer;
 import java.util.Objects;
 
 public class SegmentationActivity extends AppCompatActivity {
+    public final String FILTERS = "filters";
+    public final String SPLIT_COLORS = "splitColors";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.segm_processing);
+
 
         Objects.requireNonNull(getSupportActionBar()).hide();
 
@@ -42,35 +44,52 @@ public class SegmentationActivity extends AppCompatActivity {
 
         Segmenter segmenter = Segmentation.getClient(options);
 
+        String template = getIntent().getStringExtra("template");
         String filePath = getIntent().getStringExtra("path");
         File file = new File(filePath);
         Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+        if (template.equals(FILTERS)) {
+            openFiltersEditPage(bitmap);
+        } else if (template.equals(SPLIT_COLORS)) {
+            InputImage image = InputImage.fromBitmap(bitmap, 0);
+            Task<SegmentationMask> result =
+                    segmenter.process(image)
+                            .addOnSuccessListener(
+                                    new OnSuccessListener<SegmentationMask>() {
+                                        @Override
+                                        public void onSuccess(SegmentationMask mask) {
+                                            ByteBuffer maskBuffer = mask.getBuffer();
+                                            int maskWidth = mask.getWidth();
+                                            int maskHeight = mask.getHeight();
 
-        InputImage image = InputImage.fromBitmap(bitmap, 0);
-        Task<SegmentationMask> result =
-                segmenter.process(image)
-                        .addOnSuccessListener(
-                                new OnSuccessListener<SegmentationMask>() {
-                                    @Override
-                                    public void onSuccess(SegmentationMask mask) {
-                                        ByteBuffer maskBuffer = mask.getBuffer();
-                                        int maskWidth = mask.getWidth();
-                                        int maskHeight = mask.getHeight();
+                                            Bitmap processBitMap =
+                                                    Bitmap.createBitmap(
+                                                            maskColorsFromByteBuffer(maskBuffer, maskWidth, maskHeight), maskWidth, maskHeight, Bitmap.Config.ARGB_8888);
+                                            Bitmap testBitmap = colorBitmap(processBitMap, bitmap);
+                                            openSplitColorsEditPage(testBitmap);
 
-                                        Bitmap processBitMap =
-                                                Bitmap.createBitmap(
-                                                        maskColorsFromByteBuffer(maskBuffer, maskWidth, maskHeight), maskWidth, maskHeight, Bitmap.Config.ARGB_8888);
-                                        Bitmap testBitmap = colorBitmap(processBitMap, bitmap);
-                                        openEditPage(testBitmap);
-                                    }
-                                });
+                                        }
+                                    });
+        }
     }
-
-    public void openEditPage(Bitmap pic) {
+    public void openFiltersEditPage(Bitmap pic) {
         new Handler(getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent mySuperIntent = new Intent(SegmentationActivity.this, EditImageActivity.class);
+                Intent mySuperIntent = new Intent(SegmentationActivity.this, EditFiltersActivity.class);
+                String filePath = tempFileImage(SegmentationActivity.this, pic, "tempImage");
+                mySuperIntent.putExtra("path", filePath);
+                startActivity(mySuperIntent);
+                finish();
+            }
+        }, 1000);
+    }
+
+    public void openSplitColorsEditPage(Bitmap pic) {
+        new Handler(getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent mySuperIntent = new Intent(SegmentationActivity.this, EditSplitColorsActivity.class);
                 String filePath = tempFileImage(SegmentationActivity.this, pic, "tempImage");
                 mySuperIntent.putExtra("path", filePath);
                 startActivity(mySuperIntent);
@@ -89,7 +108,7 @@ public class SegmentationActivity extends AppCompatActivity {
             float backgroundLikelihood = 1 - byteBuffer.getFloat();
             if (backgroundLikelihood > 0.9) {
                 colors[i] = Color.TRANSPARENT;
-            } else if (backgroundLikelihood > 0.2) {
+            } else if (backgroundLikelihood > 0.25) {
                 // Linear interpolation to make sure when backgroundLikelihood is 0.2, the alpha is 0 and
                 // when backgroundLikelihood is 0.9, the alpha is 128.
                 // +0.5 to round the float value to the nearest int.

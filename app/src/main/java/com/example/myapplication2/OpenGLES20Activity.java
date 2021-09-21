@@ -6,14 +6,12 @@ import android.content.Context;
 import android.content.pm.ConfigurationInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 
 import com.example.myapplication2.openglHelper.PictureRenderer;
 
 import java.io.File;
-import java.nio.IntBuffer;
 
 public class OpenGLES20Activity extends Activity {
 
@@ -33,7 +31,7 @@ public class OpenGLES20Activity extends Activity {
 
         if (supportsEs2)
         {
-            setContentView(R.layout.edit_photo_page);
+            setContentView(R.layout.edit_split_colors_page);
             gLView = (GLSurfaceView) this.findViewById(R.id.check);
             gLView.setEGLContextClientVersion(2);
             PictureRenderer renderer = new PictureRenderer(getApplicationContext());

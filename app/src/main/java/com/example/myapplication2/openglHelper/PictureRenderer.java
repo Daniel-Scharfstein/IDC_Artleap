@@ -9,10 +9,7 @@ import static android.opengl.GLES20.glClear;
 import static android.opengl.GLES20.glClearColor;
 import static android.opengl.GLES20.glEnable;
 import static android.opengl.GLES20.glViewport;
-import static android.opengl.Matrix.multiplyMM;
-import static android.opengl.Matrix.orthoM;
 import static android.opengl.Matrix.rotateM;
-import static android.opengl.Matrix.setIdentityM;
 import static android.opengl.Matrix.translateM;
 
 import javax.microedition.khronos.egl.EGLConfig;
@@ -20,21 +17,14 @@ import javax.microedition.khronos.opengles.GL10;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView.Renderer;
-import android.opengl.Matrix;
 import android.renderscript.Matrix4f;
 
-import com.example.myapplication2.EditImageActivity;
-import com.example.myapplication2.R;
 import com.example.myapplication2.utils.EditParameters;
-import com.example.myapplication2.utils.MatrixHelper;
-import com.example.myapplication2.utils.TextResourceReader;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.nio.IntBuffer;
 
 
 public class PictureRenderer implements Renderer {
@@ -55,7 +45,7 @@ public class PictureRenderer implements Renderer {
 
     private int[] texture = new int[3];
 
-    public EditParameters currentParameters = new EditParameters(0.5f, 0.5f);
+    public EditParameters currentParameters = new EditParameters(0.0, 0.0);
 
 
 

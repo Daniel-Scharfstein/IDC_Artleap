@@ -24,12 +24,17 @@
             android:exported="true">
         </activity>
         <activity
-            android:name=".EditImageActivity"
+            android:name=".EditSplitColorsActivity"
             android:exported="true">
         </activity>
         <activity
             android:name=".SegmentationActivity"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".EditFiltersActivity"
+            android:exported="true">
+        </activity>
+
     </application>
 </manifest>
