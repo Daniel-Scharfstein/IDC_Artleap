@@ -7,6 +7,7 @@ import android.content.pm.ConfigurationInfo;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.net.Uri;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
@@ -39,8 +40,8 @@ public class EditFiltersActivity extends AppCompatActivity {
     EditParameters lastSavedParameters = new EditParameters(0.0, 0.0);
     ImageButton xBox;
     ImageButton checkBox;
+    Button colorButton;
     SeekBar colorSeekBar;
-    SeekBar angleSeekBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,7 @@ public class EditFiltersActivity extends AppCompatActivity {
             xBox.setVisibility(View.VISIBLE);
             checkBox.setVisibility(View.VISIBLE);
         });
-//        showSeekBar();
+        showSeekBar();
         clickOnBox();
 
         openImageWithOpenGl();
@@ -65,14 +66,8 @@ public class EditFiltersActivity extends AppCompatActivity {
         colorSeekBar = findViewById(R.id.colorSkBar);
         colorSeekBar.setProgressTintList(ColorStateList.valueOf(PINK));
         colorSeekBar.setVisibility(View.GONE);
-        angleSeekBar = findViewById(R.id.angleSkBar);
-        angleSeekBar.setProgressTintList(ColorStateList.valueOf(PINK));
-        angleSeekBar.setVisibility(View.GONE);
 
-//        colorButton = findViewById(R.id.colorButton);
-//        angleButton = findViewById(R.id.angleButton);
-//        spreadButton = findViewById(R.id.spreadButton);
-
+        colorButton = findViewById(R.id.filter1);
         xBox = findViewById(R.id.xBox);
         xBox.setVisibility(View.GONE);
         checkBox = findViewById(R.id.checkBox);
@@ -87,7 +82,6 @@ public class EditFiltersActivity extends AppCompatActivity {
             System.out.println(lastSavedParameters.getAngle());
             currentParameters.setAngle(lastSavedParameters.getAngle());
             colorSeekBar.setProgress((int) (lastSavedParameters.getColor()));
-            angleSeekBar.setProgress((int) (lastSavedParameters.getAngle()));
         });
         checkBox.setOnClickListener(ib -> {
             hideSeekBars();
@@ -105,68 +99,43 @@ public class EditFiltersActivity extends AppCompatActivity {
 
     public void hideSeekBars() {
         colorSeekBar.setVisibility(View.GONE);
-        angleSeekBar.setVisibility(View.GONE);
         xBox.setVisibility(View.GONE);
         checkBox.setVisibility(View.GONE);
 //        colorButton.setVisibility(View.VISIBLE);
-//        angleButton.setVisibility(View.VISIBLE);
-//        spreadButton.setVisibility(View.VISIBLE);
     }
 
     public void showSeekBars(String buttonName) {
-//        angleButton.setVisibility(!buttonName.equals(ANGLE) ? View.GONE : View.VISIBLE);
-//        spreadButton.setVisibility(!buttonName.equals(SPREAD) ? View.GONE : View.VISIBLE);
-//        colorButton.setVisibility(!buttonName.equals(COLOR) ? View.GONE : View.VISIBLE);
+//        colorButton.setVisibility(!buttonName.equals(ANGLE) ? View.GONE : View.VISIBLE);
         colorSeekBar.setVisibility(buttonName.equals(COLOR) ? View.VISIBLE : View.GONE);
-        angleSeekBar.setVisibility(buttonName.equals(ANGLE) ? View.VISIBLE : View.GONE);
         xBox.setVisibility(View.VISIBLE);
         checkBox.setVisibility(View.VISIBLE);
     }
 
-//    public void showSeekBar() {
-//        int width = 1048;
-//        int height = 1015;
-//        colorButton.setOnClickListener(ib -> {
-//            showSeekBars(COLOR);
-//            colorSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-//                @Override
-//                public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-////                    currentParameters.setColor(seekBar.getProgress());
-////                    renderer.currentParameters.setColor(currentParameters.getColor()/100);
-//                    renderer.onSurfaceChanged(null, width, height);
-//                    renderer.onDrawFrame(null);
-//                }
-//
-//                @Override
-//                public void onStartTrackingTouch(SeekBar seekBar) {
-//                }
-//
-//                @Override
-//                public void onStopTrackingTouch(SeekBar seekBar) {
-//                }
-//            });
-//        });
-//        angleButton.setOnClickListener(ib -> {
-//            showSeekBars(ANGLE);
-//            angleSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-//                @Override
-//                public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-////                    currentParameters.setAngle(seekBar.getProgress());
-////                    renderer.currentParameters.setAngle(currentParameters.getAngle()/100);
-//                    renderer.onSurfaceChanged(null, width, height);
-//                    renderer.onDrawFrame(null);
-//                }
-//
-//                @Override
-//                public void onStartTrackingTouch(SeekBar seekBar) {
-//                }
-//
-//                @Override
-//                public void onStopTrackingTouch(SeekBar seekBar) {
-//                }
-//            });
-//        });
-//    }
+    public void showSeekBar() {
+        int width = 1048;
+        int height = 1015;
+        colorButton.setOnClickListener(ib -> {
+            showSeekBars(COLOR);
+            colorSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                    currentParameters.setColor(seekBar.getProgress());
+                    renderer.currentParameters.setColor(currentParameters.getColor()/100);
+                    renderer.onSurfaceChanged(null, width, height);
+                    renderer.onDrawFrame(null);
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+                }
+            });
+        });
+
+    }
 
     public void setActionBar() {
         Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);

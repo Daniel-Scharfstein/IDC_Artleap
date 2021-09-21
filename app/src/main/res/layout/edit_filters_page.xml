@@ -8,6 +8,9 @@
     android:padding="16dp"
     tools:context=".EditSplitColorsActivity">
 
+    <!--    app:srcCompat="@drawable/mock_ido"-->
+
+
     <SeekBar
         android:id="@+id/colorSkBar"
         android:layout_width="159dp"
@@ -22,27 +25,8 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.767"
+        app:layout_constraintVertical_bias="0.737"
         tools:ignore="MissingConstraints" />
-
-    <SeekBar
-        android:id="@+id/angleSkBar"
-        android:layout_width="159dp"
-        android:layout_height="48dp"
-        android:layerType="none"
-        android:progressBackgroundTint="@color/white"
-        android:splitTrack="false"
-        android:thumb="@drawable/white_thumb"
-        android:thumbTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.767"
-        tools:ignore="MissingConstraints" />
-
-    <!--    app:srcCompat="@drawable/mock_ido"-->
 
     <android.opengl.GLSurfaceView
         android:id="@+id/check"
@@ -102,7 +86,7 @@
 
     <HorizontalScrollView
         android:layout_width="wrap_content"
-        android:layout_height="140dp"
+        android:layout_height="110dp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
