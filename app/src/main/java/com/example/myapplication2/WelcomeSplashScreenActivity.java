@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
+public class WelcomeSplashScreenActivity extends AppCompatActivity {
 
     ProgressBar splashProgress;
     int SPLASH_TIME = 2000; //This is 3 seconds
@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+        setContentView(R.layout.splash_welcome_page);
         setActionBar();
 
         splashProgress = findViewById(R.id.splashProgress);
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler(getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent mySuperIntent = new Intent(MainActivity.this, HomeActivity.class);
+                Intent mySuperIntent = new Intent(WelcomeSplashScreenActivity.this, HomeActivity.class);
                 startActivity(mySuperIntent);
                 finish();
             }

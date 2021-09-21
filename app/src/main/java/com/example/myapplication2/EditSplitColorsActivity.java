@@ -174,7 +174,7 @@ public class EditSplitColorsActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater mi = getMenuInflater();
-        mi.inflate(R.menu.actionbar1, menu);
+        mi.inflate(R.menu.edit_page_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

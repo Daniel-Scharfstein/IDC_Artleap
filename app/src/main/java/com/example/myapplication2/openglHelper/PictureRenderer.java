@@ -30,7 +30,8 @@ import java.nio.ByteOrder;
 public class PictureRenderer implements Renderer {
     private final Context context;
 
-    private float[] opacity = {(float) 1, (float) 0.4, (float) 0.6};
+    private float[] opacity = {(float) 1, (float) 0.2, (float) 0.4};
+
     private final Matrix4f[] matrix = new Matrix4f[3];
     private Picture[] pictures = new Picture[3];
 

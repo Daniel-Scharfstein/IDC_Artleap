@@ -176,7 +176,7 @@ public class EditFiltersActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater mi = getMenuInflater();
-        mi.inflate(R.menu.actionbar1, menu);
+        mi.inflate(R.menu.edit_page_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -210,6 +210,7 @@ public class EditFiltersActivity extends AppCompatActivity {
             gLView.setEGLContextClientVersion(2);
             renderer = new PictureRenderer(getApplicationContext());
             renderer.pic = picture;
+            renderer.currentParameters.setColor(0.0f);
             gLView.setRenderer(renderer);
         }
     }

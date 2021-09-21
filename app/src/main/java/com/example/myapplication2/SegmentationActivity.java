@@ -31,7 +31,7 @@ public class SegmentationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.segm_processing);
+        setContentView(R.layout.segmentation_processing);
 
 
         Objects.requireNonNull(getSupportActionBar()).hide();

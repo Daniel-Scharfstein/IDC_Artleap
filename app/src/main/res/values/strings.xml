@@ -7,6 +7,8 @@
     <string name="split_colors">Split Colors</string>
     <string name="split_colors_Title">"   Split Colors"</string>
     <string name="color_split_desc">"    See yourself in triple (or more!)"</string>
+    <string name="filters_Title">"   Filters"</string>
+    <string name="filters_desc">"    A tonal touch to change the mood"</string>
     <string name="KaleidoDrop_Title">"   KaleidoDrop"</string>
     <string name="Kaleido_desc">"    Kaleido the background behind any subject!"</string>
     <string name="Lensball_Title">"   Lensball"</string>
