@@ -64,10 +64,16 @@ public class SegmentationActivity extends AppCompatActivity {
     }
 
     public void openEditPage(Bitmap pic) {
-        Intent intent = new Intent(this, EditImageActivity.class);
-        String filePath = tempFileImage(this, pic, "tempImage");
-        intent.putExtra("path", filePath);
-        startActivity(intent);
+        new Handler(getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent mySuperIntent = new Intent(SegmentationActivity.this, EditImageActivity.class);
+                String filePath = tempFileImage(SegmentationActivity.this, pic, "tempImage");
+                mySuperIntent.putExtra("path", filePath);
+                startActivity(mySuperIntent);
+                finish();
+            }
+        }, 2000);
     }
 
     /**
@@ -84,7 +90,7 @@ public class SegmentationActivity extends AppCompatActivity {
                 // Linear interpolation to make sure when backgroundLikelihood is 0.2, the alpha is 0 and
                 // when backgroundLikelihood is 0.9, the alpha is 128.
                 // +0.5 to round the float value to the nearest int.
-                colors[i] = Color.argb(128,0,0,0);
+                colors[i] = Color.BLUE;
             } else {
                 colors[i] = Color.WHITE;
             }
@@ -98,6 +104,21 @@ public class SegmentationActivity extends AppCompatActivity {
             for (int y = 0; y < bitmap.getHeight(); y++) {
                 if (bitmap.getPixel(x, y) == Color.WHITE) {
                     bitmap.setPixel(x, y, image.getPixel(x, y));
+                }
+                if (bitmap.getPixel(x, y) == Color.BLUE) {
+                    int pixelColor = image.getPixel(x, y);
+                    int alpha = Color.alpha(pixelColor);
+                    int red = Color.red(pixelColor);
+                    int green = Color.green(pixelColor);
+                    int blue = Color.blue(pixelColor);
+
+                    // Set alpha based on your logic, here I'm making it 25% of it's initial value.
+                    alpha *= 0.18;
+
+                    int newColor = Color.argb(alpha, red, green, blue);
+
+                    bitmap.setPixel(x, y, newColor);
+
                 }
             }
         }
