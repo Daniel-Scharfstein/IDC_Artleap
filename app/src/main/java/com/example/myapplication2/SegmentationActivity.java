@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 
 import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
