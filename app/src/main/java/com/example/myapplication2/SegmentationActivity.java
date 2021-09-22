@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.ProgressBar;
 
 import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;

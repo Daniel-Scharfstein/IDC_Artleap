@@ -9,11 +9,6 @@ import static android.opengl.GLES20.glClear;
 import static android.opengl.GLES20.glClearColor;
 import static android.opengl.GLES20.glEnable;
 import static android.opengl.GLES20.glViewport;
-import static android.opengl.Matrix.rotateM;
-import static android.opengl.Matrix.translateM;
-
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -26,12 +21,14 @@ import com.example.myapplication2.utils.EditParameters;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
+
 
 public class PictureRenderer implements Renderer {
     private final Context context;
 
-    private float[] opacity = {(float) 1, (float) 0.2, (float) 0.4};
-
+    private float[] opacity = {(float) 1, (float) 0.6, (float) 0.4};
     private final Matrix4f[] matrix = new Matrix4f[3];
     private Picture[] pictures = new Picture[3];
 
@@ -73,9 +70,9 @@ public class PictureRenderer implements Renderer {
         // Set the OpenGL viewport to fill the entire surface.
         glViewport(0, 0, width, height);
 
-//        for (int i=0; i < 3; i++) {
-//            setPictureScale(width, height, matrix[i]);
-//        }
+        for (int i=0; i < 3; i++) {
+            setPictureScale(width, height, matrix[i]);
+        }
 
 
        movePicture((float) currentParameters.getAngle(),0, matrix[1]);
