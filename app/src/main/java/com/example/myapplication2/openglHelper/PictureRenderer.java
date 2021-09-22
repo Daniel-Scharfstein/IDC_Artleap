@@ -42,8 +42,7 @@ public class PictureRenderer implements Renderer {
 
     private int[] texture = new int[3];
 
-    public EditParameters currentParameters = new EditParameters(0.0, 0.0);
-
+    public EditParameters currentParameters = new EditParameters(0.0, 0.0, 0.0);
 
 
     public PictureRenderer(Context context) {
@@ -56,7 +55,7 @@ public class PictureRenderer implements Renderer {
 
         TextureHelper.setTextureHandle(4);
 
-        for (int i=0; i < 3; i++){
+        for (int i = 0; i < 3; i++) {
             pictures[i] = new Picture();
             textureShaderPrograms[i] = new TextureShaderProgram(context);
             texture[i] = TextureHelper.loadTexture(pic, i);
@@ -70,13 +69,17 @@ public class PictureRenderer implements Renderer {
         // Set the OpenGL viewport to fill the entire surface.
         glViewport(0, 0, width, height);
 
-        for (int i=0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             setPictureScale(width, height, matrix[i]);
         }
 
 
-       movePicture((float) currentParameters.getAngle(),0, matrix[1]);
-        movePicture(-(float) currentParameters.getAngle(),0, matrix[2]);
+//       movePicture((float) currentParameters.getSpreadX(),0, matrix[1]);
+//        movePicture(-(float) currentParameters.getSpreadX(),0, matrix[2]);
+
+        movePicture((float) currentParameters.getSpreadX(), (float) currentParameters.getSpreadY(), matrix[1]);
+        movePicture(-(float) currentParameters.getSpreadX(), -(float) currentParameters.getSpreadY(), matrix[2]);
+
 
         checkWidth = width;
         checkHeight = height;
@@ -87,10 +90,10 @@ public class PictureRenderer implements Renderer {
         // Clear the rendering surface.
         glClear(GL_COLOR_BUFFER_BIT);
 
-        glEnable( GL_BLEND );
-        glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-        for (int i=0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             textureShaderPrograms[i].useProgram();
             textureShaderPrograms[i].setUniforms(matrix[i].getArray(), texture[i], opacity[i], (float) currentParameters.getColor());
             pictures[i].bindData(textureShaderPrograms[i]);
@@ -101,24 +104,24 @@ public class PictureRenderer implements Renderer {
 
     }
 
-    private void setPictureScale(int viewWidth, int viewHeight, Matrix4f matrix){
+    private void setPictureScale(int viewWidth, int viewHeight, Matrix4f matrix) {
 
         final float aspectRatio = viewWidth > viewHeight ?
                 (float) viewWidth / (float) viewHeight :
                 (float) viewHeight / (float) viewWidth;
         if (viewWidth > viewHeight) {
-            matrix.loadOrtho(-aspectRatio, aspectRatio,-1f,1f,-1f,1f);
+            matrix.loadOrtho(-aspectRatio, aspectRatio, -1f, 1f, -1f, 1f);
         } else {
-            matrix.loadOrtho(-1f,1f,-aspectRatio, aspectRatio,-1f,1f);
+            matrix.loadOrtho(-1f, 1f, -aspectRatio, aspectRatio, -1f, 1f);
         }
 
     }
 
-    private void movePicture(float x, float y, Matrix4f matrix){
-        matrix.loadTranslate(x,y,0);
+    private void movePicture(float x, float y, Matrix4f matrix) {
+        matrix.loadTranslate(x, y, 0);
     }
 
-    public void saveChanges(int width, int height){
+    public void saveChanges(int width, int height) {
         int screenshotSize = width * height;
         ByteBuffer bb = ByteBuffer.allocateDirect(screenshotSize * 4);
         bb.order(ByteOrder.nativeOrder());
@@ -128,11 +131,11 @@ public class PictureRenderer implements Renderer {
         bb = null;
 
         for (int i = 0; i < screenshotSize; ++i) {
-            pixelsBuffer[i] = ((pixelsBuffer[i] & 0xff00ff00)) |    ((pixelsBuffer[i] & 0x000000ff) << 16) | ((pixelsBuffer[i] & 0x00ff0000) >> 16);
+            pixelsBuffer[i] = ((pixelsBuffer[i] & 0xff00ff00)) | ((pixelsBuffer[i] & 0x000000ff) << 16) | ((pixelsBuffer[i] & 0x00ff0000) >> 16);
         }
 
         savedPicture = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-        savedPicture.setPixels(pixelsBuffer, screenshotSize-width, -width, 0, 0, width, height);
+        savedPicture.setPixels(pixelsBuffer, screenshotSize - width, -width, 0, 0, width, height);
 
     }
 

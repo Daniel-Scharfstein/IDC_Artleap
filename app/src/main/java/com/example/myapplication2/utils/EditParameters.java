@@ -2,12 +2,15 @@ package com.example.myapplication2.utils;
 
 public class EditParameters {
     double color;
-    double angle;
+    double spreadX;
+    double spreadY;
 
 
-    public EditParameters(double color, double angle) {
+    public EditParameters(double color, double spreadX, double spreadY) {
         setColor(color);
-        setAngle(angle);
+        setSpreadX(spreadX);
+        setSpreadY(spreadY);
+
     }
 
     public double getColor() {
@@ -18,11 +21,19 @@ public class EditParameters {
         this.color = color;
     }
 
-    public double getAngle() {
-        return angle;
+    public double getSpreadX() {
+        return spreadX;
     }
 
-    public void setAngle(double angle) {
-        this.angle = angle;
+    public void setSpreadX(double spreadX) {
+        this.spreadX = spreadX;
+    }
+
+    public double getSpreadY() {
+        return spreadY;
+    }
+
+    public void setSpreadY(double spreadY) {
+        this.spreadY = spreadY;
     }
 }

@@ -26,7 +26,24 @@
         tools:ignore="MissingConstraints" />
 
     <SeekBar
-        android:id="@+id/angleSkBar"
+        android:id="@+id/spreadXSkBar"
+        android:layout_width="159dp"
+        android:layout_height="48dp"
+        android:layerType="none"
+        android:progressBackgroundTint="@color/white"
+        android:splitTrack="false"
+        android:thumb="@drawable/white_thumb"
+        android:thumbTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.767"
+        tools:ignore="MissingConstraints" />
+
+    <SeekBar
+        android:id="@+id/spreadYSkBar"
         android:layout_width="159dp"
         android:layout_height="48dp"
         android:layerType="none"
@@ -62,35 +79,35 @@
         tools:ignore="ContentDescription,MissingConstraints,ImageContrastCheck,SpeakableTextPresentCheck" />
 
     <Button
-        android:id="@+id/spreadButton"
-        android:layout_width="72dp"
+        android:id="@+id/spreadYButton"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="89dp"
         android:layout_height="71dp"
         android:background="#141416"
-        android:drawableTop="@drawable/spread"
-        android:text="Spread"
-        android:textSize="10sp"
-        android:textColor="#A9AAA5"
+        android:drawableTop="@drawable/spread_y"
         android:fontFamily="@font/brown_ll_regular"
+        android:text="Spread Y"
+        android:textColor="#A9AAA5"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.879"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.907"
-        style="?android:attr/borderlessButtonStyle"
         tools:ignore="ContentDescription,MissingConstraints,ImageContrastCheck,ImageContrastCheck,SpeakableTextPresentCheck" />
 
     <!--    app:srcCompat="@drawable/mock_ido"-->
 
     <Button
-        android:id="@+id/angleButton"
+        android:id="@+id/spreadXButton"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="92dp"
         android:layout_height="78dp"
         android:background="#141416"
-        android:drawableTop="@drawable/angle_bar_edit"
+        android:drawableTop="@drawable/spread_x"
         android:fontFamily="@font/brown_ll_regular"
-        android:text="Angle"
+        android:text="Spread X"
         android:textColor="#A9AAA5"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -31,19 +31,20 @@ import java.util.Objects;
 public class EditSplitColorsActivity extends AppCompatActivity {
     public static final int PINK = 0xFFF15ECF;
     public final String COLOR = "COLOR";
-    public final String ANGLE = "ANGLE";
-    public final String SPREAD = "SPREAD";
+    public final String SPREADX = "SPREADX";
+    public final String SPREADY = "SPREADY";
 
     PictureRenderer renderer;
-    EditParameters currentParameters = new EditParameters(0.0, 0.5);
-    EditParameters lastSavedParameters = new EditParameters(0.0, 0.0);
+    EditParameters currentParameters = new EditParameters(0.0, 0.5, 0.0);
+    EditParameters lastSavedParameters = new EditParameters(0.0, 0.0, 0.0);
     Button colorButton;
-    Button angleButton;
-    Button spreadButton;
+    Button spreadXButton;
+    Button spreadYButton;
     ImageButton xBox;
     ImageButton checkBox;
     SeekBar colorSeekBar;
-    SeekBar angleSeekBar;
+    SeekBar spreadXSeekBar;
+    SeekBar spreadYSeekBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,13 +64,16 @@ public class EditSplitColorsActivity extends AppCompatActivity {
         colorSeekBar = findViewById(R.id.colorSkBar);
         colorSeekBar.setProgressTintList(ColorStateList.valueOf(PINK));
         colorSeekBar.setVisibility(View.GONE);
-        angleSeekBar = findViewById(R.id.angleSkBar);
-        angleSeekBar.setProgressTintList(ColorStateList.valueOf(PINK));
-        angleSeekBar.setVisibility(View.GONE);
+        spreadXSeekBar = findViewById(R.id.spreadXSkBar);
+        spreadXSeekBar.setProgressTintList(ColorStateList.valueOf(PINK));
+        spreadXSeekBar.setVisibility(View.GONE);
+        spreadYSeekBar = findViewById(R.id.spreadYSkBar);
+        spreadYSeekBar.setProgressTintList(ColorStateList.valueOf(PINK));
+        spreadYSeekBar.setVisibility(View.GONE);
 
         colorButton = findViewById(R.id.colorButton);
-        angleButton = findViewById(R.id.angleButton);
-        spreadButton = findViewById(R.id.spreadButton);
+        spreadXButton = findViewById(R.id.spreadXButton);
+        spreadYButton = findViewById(R.id.spreadYButton);
 
         xBox = findViewById(R.id.xBox);
         xBox.setVisibility(View.GONE);
@@ -82,15 +86,18 @@ public class EditSplitColorsActivity extends AppCompatActivity {
         xBox.setOnClickListener(ib -> {
             hideSeekBars();
             currentParameters.setColor(lastSavedParameters.getColor());
-            System.out.println(lastSavedParameters.getAngle());
-            currentParameters.setAngle(lastSavedParameters.getAngle());
+            currentParameters.setSpreadX(lastSavedParameters.getSpreadX());
+            currentParameters.setSpreadX(lastSavedParameters.getSpreadY());
             colorSeekBar.setProgress((int) (lastSavedParameters.getColor()));
-            angleSeekBar.setProgress((int) (lastSavedParameters.getAngle()));
+            spreadXSeekBar.setProgress((int) (lastSavedParameters.getSpreadX()));
+            spreadYSeekBar.setProgress((int) (lastSavedParameters.getSpreadY()));
+
         });
         checkBox.setOnClickListener(ib -> {
             hideSeekBars();
             lastSavedParameters.setColor(currentParameters.getColor());
-            lastSavedParameters.setAngle(currentParameters.getAngle());
+            lastSavedParameters.setSpreadX(currentParameters.getSpreadX());
+            lastSavedParameters.setSpreadY(currentParameters.getSpreadY());
         });
     }
 
@@ -103,20 +110,22 @@ public class EditSplitColorsActivity extends AppCompatActivity {
 
     public void hideSeekBars() {
         colorSeekBar.setVisibility(View.GONE);
-        angleSeekBar.setVisibility(View.GONE);
+        spreadXSeekBar.setVisibility(View.GONE);
+        spreadYSeekBar.setVisibility(View.GONE);
         xBox.setVisibility(View.GONE);
         checkBox.setVisibility(View.GONE);
         colorButton.setVisibility(View.VISIBLE);
-        angleButton.setVisibility(View.VISIBLE);
-        spreadButton.setVisibility(View.VISIBLE);
+        spreadXButton.setVisibility(View.VISIBLE);
+        spreadYButton.setVisibility(View.VISIBLE);
     }
 
     public void showSeekBars(String buttonName) {
-        angleButton.setVisibility(!buttonName.equals(ANGLE) ? View.GONE : View.VISIBLE);
-        spreadButton.setVisibility(!buttonName.equals(SPREAD) ? View.GONE : View.VISIBLE);
+        spreadXButton.setVisibility(!buttonName.equals(SPREADX) ? View.GONE : View.VISIBLE);
+        spreadYButton.setVisibility(!buttonName.equals(SPREADY) ? View.GONE : View.VISIBLE);
         colorButton.setVisibility(!buttonName.equals(COLOR) ? View.GONE : View.VISIBLE);
         colorSeekBar.setVisibility(buttonName.equals(COLOR) ? View.VISIBLE : View.GONE);
-        angleSeekBar.setVisibility(buttonName.equals(ANGLE) ? View.VISIBLE : View.GONE);
+        spreadXSeekBar.setVisibility(buttonName.equals(SPREADX) ? View.VISIBLE : View.GONE);
+        spreadYSeekBar.setVisibility(buttonName.equals(SPREADY) ? View.VISIBLE : View.GONE);
         xBox.setVisibility(View.VISIBLE);
         checkBox.setVisibility(View.VISIBLE);
     }
@@ -144,13 +153,13 @@ public class EditSplitColorsActivity extends AppCompatActivity {
                 }
             });
         });
-        angleButton.setOnClickListener(ib -> {
-            showSeekBars(ANGLE);
-            angleSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        spreadXButton.setOnClickListener(ib -> {
+            showSeekBars(SPREADX);
+            spreadXSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                    currentParameters.setAngle(seekBar.getProgress());
-                    renderer.currentParameters.setAngle(currentParameters.getAngle()/100);
+                    currentParameters.setSpreadX(seekBar.getProgress());
+                    renderer.currentParameters.setSpreadX(currentParameters.getSpreadX()/100);
                     renderer.onSurfaceChanged(null, width, height);
                     renderer.onDrawFrame(null);
                 }
@@ -164,6 +173,27 @@ public class EditSplitColorsActivity extends AppCompatActivity {
                 }
             });
         });
+        spreadYButton.setOnClickListener(ib -> {
+            showSeekBars(SPREADY);
+            spreadYSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                    currentParameters.setSpreadY(seekBar.getProgress());
+                    renderer.currentParameters.setSpreadY(currentParameters.getSpreadY()/100);
+                    renderer.onSurfaceChanged(null, width, height);
+                    renderer.onDrawFrame(null);
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+                }
+            });
+        });
+
     }
 
     public void setActionBar() {
@@ -208,7 +238,7 @@ public class EditSplitColorsActivity extends AppCompatActivity {
             gLView.setEGLContextClientVersion(2);
             renderer = new PictureRenderer(getApplicationContext());
             renderer.pic = picture;
-            renderer.currentParameters.setAngle(0.5f);
+            renderer.currentParameters.setSpreadX(0.5f);
             gLView.setRenderer(renderer);
         }
     }

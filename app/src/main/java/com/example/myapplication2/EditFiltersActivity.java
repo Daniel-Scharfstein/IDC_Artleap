@@ -7,7 +7,6 @@ import android.content.pm.ConfigurationInfo;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.net.Uri;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
@@ -36,8 +35,8 @@ public class EditFiltersActivity extends AppCompatActivity {
     public final String SPREAD = "SPREAD";
 
     PictureRenderer renderer;
-    EditParameters currentParameters = new EditParameters(0.0, 0.0);
-    EditParameters lastSavedParameters = new EditParameters(0.0, 0.0);
+    EditParameters currentParameters = new EditParameters(0.0, 0.0, 0.0);
+    EditParameters lastSavedParameters = new EditParameters(0.0, 0.0, 0.0);
     ImageButton xBox;
     ImageButton checkBox;
     Button colorButton;
@@ -79,14 +78,14 @@ public class EditFiltersActivity extends AppCompatActivity {
         xBox.setOnClickListener(ib -> {
             hideSeekBars();
             currentParameters.setColor(lastSavedParameters.getColor());
-            System.out.println(lastSavedParameters.getAngle());
-            currentParameters.setAngle(lastSavedParameters.getAngle());
+            System.out.println(lastSavedParameters.getSpreadX());
+            currentParameters.setSpreadX(lastSavedParameters.getSpreadX());
             colorSeekBar.setProgress((int) (lastSavedParameters.getColor()));
         });
         checkBox.setOnClickListener(ib -> {
             hideSeekBars();
             lastSavedParameters.setColor(currentParameters.getColor());
-            lastSavedParameters.setAngle(currentParameters.getAngle());
+            lastSavedParameters.setSpreadX(currentParameters.getSpreadX());
         });
     }
 
