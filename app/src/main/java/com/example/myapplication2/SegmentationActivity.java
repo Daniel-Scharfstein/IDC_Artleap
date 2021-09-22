@@ -28,7 +28,7 @@ public class SegmentationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.segmentation_processing);
+        setContentView(R.layout.segm_processing);
         Objects.requireNonNull(getSupportActionBar()).hide();
 
         SelfieSegmenterOptions options =
