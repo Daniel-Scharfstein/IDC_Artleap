@@ -31,27 +31,27 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 
-public class PictureRenderer implements Renderer {
-    private final Context context;
 
-    private float[] opacity = {(float) 0.5, (float) 0.7, (float) 0.6};
-    private Matrix4f[] matrix = new Matrix4f[3];
-    private Picture[] pictures = new Picture[3];
+public class FilterRenderer implements Renderer {
+    private final Context context;
+    private int checkWidth;
+    private int checkHeight;
+
+    private Matrix4f matrix = new Matrix4f();
+    private Picture picture = new Picture();
 
     public Bitmap pic;
     public Bitmap savedPicture;
 
-    private TextureShaderProgram[] textureShaderPrograms = new TextureShaderProgram[3];
-
-    private int checkWidth;
-    private int checkHeight;
-
-    private int[] texture = new int[3];
+    private TextureFilterShaderProgram textureShaderProgram;
+    private int texture;
 
     public EditParameters currentParameters = new EditParameters(0.0, 0.0, 0.0);
 
 
-    public PictureRenderer(Context context) {
+
+
+    public FilterRenderer(Context context) {
         this.context = context;
     }
 
@@ -61,13 +61,8 @@ public class PictureRenderer implements Renderer {
 
         TextureHelper.setTextureHandle(4);
 
-        for (int i = 0; i < 3; i++) {
-            pictures[i] = new Picture();
-            textureShaderPrograms[i] = new TextureShaderProgram(context);
-            texture[i] = TextureHelper.loadTexture(pic, i);
-            matrix[i] = new Matrix4f();
-        }
-
+        textureShaderProgram = new TextureFilterShaderProgram(context);
+        texture = TextureHelper.loadTexture(pic, 0);
 
 
     }
@@ -76,22 +71,7 @@ public class PictureRenderer implements Renderer {
     public void onSurfaceChanged(GL10 glUnused, int width, int height) {
         // Set the OpenGL viewport to fill the entire surface.
         glViewport(0, 0, width, height);
-
-
-        Matrix4f[] moveMatrix = new Matrix4f[3];
-        Matrix4f[] scaleMatrix = new Matrix4f[3];
-        moveMatrix[0] = new Matrix4f();
-        moveMatrix[1] = movePicture((float) currentParameters.getSpreadX(), (float) currentParameters.getSpreadY(),1);
-        moveMatrix[2] = movePicture(-(float) currentParameters.getSpreadX(), -(float) currentParameters.getSpreadY(), 2);
-
-        for (int i = 0; i < 3; i++) {
-//            scaleMatrix[i] = setPictureScale(width, height, i);
-            scaleMatrix[i] = new Matrix4f();
-            matrix[i].loadMultiply(moveMatrix[i],scaleMatrix[i]);
-        }
-
-
-
+        matrix =  setPictureScale(width, height);
 
 
         checkWidth = width;
@@ -106,27 +86,18 @@ public class PictureRenderer implements Renderer {
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-        if (currentParameters.getSpreadX() == 0 && currentParameters.getSpreadY() == 0){
-            opacity[0] = 1;
-        }
-        else
-        {
-            opacity[0] = 0.5f;
-        }
 
+            textureShaderProgram.useProgram();
+            textureShaderProgram.setUniforms(matrix.getArray(), texture);
+            picture.bindFilterData(textureShaderProgram);
+            picture.draw();
 
-        for (int i = 0; i < 3; i++) {
-            textureShaderPrograms[2-i].useProgram();
-            textureShaderPrograms[2-i].setUniforms(matrix[2-i].getArray(), texture[2-i], opacity[2-i], (float) currentParameters.getColor());
-            pictures[2-i].bindData(textureShaderPrograms[2-i]);
-            pictures[2-i].draw();
-        }
 
         saveChanges(checkWidth, checkHeight);
 
     }
 
-    private Matrix4f setPictureScale(int viewWidth, int viewHeight, int id) {
+    private Matrix4f setPictureScale(int viewWidth, int viewHeight) {
         Matrix4f ortho = new Matrix4f();
 
         final float aspectRatio = viewWidth > viewHeight ?
@@ -138,14 +109,8 @@ public class PictureRenderer implements Renderer {
             ortho.loadOrtho(-1f, 1f, -aspectRatio, aspectRatio, -1f, 1f);
         }
         return ortho;
-//        matrix[id].load(mat);
     }
 
-    private Matrix4f movePicture(float x, float y, int id) {
-        Matrix4f move = new Matrix4f();
-        move.loadTranslate(x, y, 0);
-        return move;
-    }
 
     public void saveChanges(int width, int height) {
         int screenshotSize = width * height;

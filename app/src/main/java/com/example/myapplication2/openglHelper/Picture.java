@@ -39,6 +39,20 @@ public class Picture {
 
     }
 
+    public void bindFilterData(TextureFilterShaderProgram textureProgram) {
+        vertexArray.setVertexAttribPointer(
+                0,
+                textureProgram.getPositionAttributeLocation(),
+                POSITION_COMPONENT_COUNT,
+                STRIDE);
+        vertexArray.setVertexAttribPointer(
+                POSITION_COMPONENT_COUNT,
+                textureProgram.getTextureCoordinatesAttributeLocation(),
+                TEXTURE_COORDINATES_COMPONENT_COUNT,
+                STRIDE);
+
+    }
+
     public void draw() {
         GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP, 0, 4);
     }

@@ -22,6 +22,7 @@ import android.widget.SeekBar;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication2.openglHelper.FilterRenderer;
 import com.example.myapplication2.openglHelper.PictureRenderer;
 import com.example.myapplication2.utils.EditParameters;
 
@@ -34,7 +35,7 @@ public class EditFiltersActivity extends AppCompatActivity {
     public final String ANGLE = "ANGLE";
     public final String SPREAD = "SPREAD";
 
-    PictureRenderer renderer;
+    FilterRenderer renderer;
     EditParameters currentParameters = new EditParameters(0.0, 0.0, 0.0);
     EditParameters lastSavedParameters = new EditParameters(0.0, 0.0, 0.0);
     ImageButton xBox;
@@ -78,14 +79,11 @@ public class EditFiltersActivity extends AppCompatActivity {
         xBox.setOnClickListener(ib -> {
             hideSeekBars();
             currentParameters.setColor(lastSavedParameters.getColor());
-            System.out.println(lastSavedParameters.getSpreadX());
-            currentParameters.setSpreadX(lastSavedParameters.getSpreadX());
             colorSeekBar.setProgress((int) (lastSavedParameters.getColor()));
         });
         checkBox.setOnClickListener(ib -> {
             hideSeekBars();
             lastSavedParameters.setColor(currentParameters.getColor());
-            lastSavedParameters.setSpreadX(currentParameters.getSpreadX());
         });
     }
 
@@ -100,11 +98,9 @@ public class EditFiltersActivity extends AppCompatActivity {
         colorSeekBar.setVisibility(View.GONE);
         xBox.setVisibility(View.GONE);
         checkBox.setVisibility(View.GONE);
-//        colorButton.setVisibility(View.VISIBLE);
     }
 
     public void showSeekBars(String buttonName) {
-//        colorButton.setVisibility(!buttonName.equals(ANGLE) ? View.GONE : View.VISIBLE);
         colorSeekBar.setVisibility(buttonName.equals(COLOR) ? View.VISIBLE : View.GONE);
         xBox.setVisibility(View.VISIBLE);
         checkBox.setVisibility(View.VISIBLE);
@@ -176,7 +172,7 @@ public class EditFiltersActivity extends AppCompatActivity {
         if (supportsEs2) {
             GLSurfaceView gLView =  this.findViewById(R.id.check);
             gLView.setEGLContextClientVersion(2);
-            renderer = new PictureRenderer(getApplicationContext());
+            renderer = new FilterRenderer(getApplicationContext());
             renderer.pic = picture;
             renderer.currentParameters.setColor(0.0f);
             gLView.setRenderer(renderer);

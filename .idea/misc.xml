@@ -11,25 +11,22 @@
         <entry key="app/src/main/res/drawable/rounded_corner_style_image.xml" value="0.24635416666666668" />
         <entry key="app/src/main/res/layout/abs_layout.xml" value="0.21302083333333333" />
         <entry key="app/src/main/res/layout/action_bar.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/action_bar_edit.xml" value="0.23020833333333332" />
-        <entry key="app/src/main/res/layout/activity_home_page.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/action_bar_edit.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_home_page.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/edit_filters_page.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_still_image.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/edit_filters_page.xml" value="0.23541666666666666" />
         <entry key="app/src/main/res/layout/edit_image_page.xml" value="0.335" />
         <entry key="app/src/main/res/layout/edit_photo_page.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/edit_split_colors_page.xml" value="0.22666666666666666" />
-        <entry key="app/src/main/res/layout/home_page.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/edit_split_colors_page.xml" value="0.23541666666666666" />
         <entry key="app/src/main/res/layout/loading_page.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/segm_processing_.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/segmentation_processing.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/splash.xml" value="0.209375" />
-        <entry key="app/src/main/res/layout/splash_welcome_page.xml" value="0.11145833333333334" />
         <entry key="app/src/main/res/layout/test.xml" value="0.22" />
         <entry key="app/src/main/res/layout/test_home.xml" value="0.375" />
         <entry key="app/src/main/res/layout/upload_photo.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/menu/actionbar1.xml" value="0.45" />
-        <entry key="app/src/main/res/menu/editPageMenu.xml" value="0.271875" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.228125" />
       </map>
     </option>

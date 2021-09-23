@@ -7,8 +7,9 @@ varying float v_Id;
 
 
 
-vec4 red = vec4(1,0, 0, 1);
-vec4 blue = vec4(0,0, 1, 1);
+vec4 red = vec4(1,0.0,0.0,1);
+
+vec4 blue = vec4(0.0,0.0,1, 1);
 void main()
 {
     vec4 texture = texture2D(u_TextureUnit, v_TextureCoordinates);
@@ -21,13 +22,13 @@ void main()
     texture.a = v_Opacity;
 
     if(v_Id == 2.0){
-        red.g = v_Color;
-        gl_FragColor =  red * texture;
+        blue.r = v_Color;
+        gl_FragColor =  blue * texture;
         return;
     }
     else if(v_Id == 3.0){
-        blue.r = v_Color;
-        gl_FragColor = blue * texture;
+        red.g = v_Color;
+        gl_FragColor = red * texture;
         return;
     }
 
