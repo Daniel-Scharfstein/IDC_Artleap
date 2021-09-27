@@ -14,15 +14,9 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView.Renderer;
-import android.opengl.Matrix;
-import android.os.Build;
 import android.renderscript.Matrix4f;
-import android.util.DisplayMetrics;
-import android.view.Display;
 
-import androidx.annotation.RequiresApi;
-
-import com.example.myapplication2.utils.EditParameters;
+import com.example.myapplication2.utils.EditParametersSplitColors;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -46,7 +40,7 @@ public class FilterRenderer implements Renderer {
     private TextureFilterShaderProgram textureShaderProgram;
     private int texture;
 
-    public EditParameters currentParameters = new EditParameters(0.0, 0.0, 0.0);
+    public EditParametersSplitColors currentParameters = new EditParametersSplitColors(0.0, 0.0, 0.0);
 
 
 

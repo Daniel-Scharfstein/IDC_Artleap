@@ -1,12 +1,12 @@
 package com.example.myapplication2.utils;
 
-public class EditParameters {
+public class EditParametersSplitColors {
     double color;
     double spreadX;
     double spreadY;
 
 
-    public EditParameters(double color, double spreadX, double spreadY) {
+    public EditParametersSplitColors(double color, double spreadX, double spreadY) {
         setColor(color);
         setSpreadX(spreadX);
         setSpreadY(spreadY);

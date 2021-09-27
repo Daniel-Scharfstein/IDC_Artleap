@@ -23,7 +23,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication2.openglHelper.PictureRenderer;
-import com.example.myapplication2.utils.EditParameters;
+import com.example.myapplication2.utils.EditParametersSplitColors;
 
 import java.io.File;
 import java.util.Objects;
@@ -35,8 +35,8 @@ public class EditSplitColorsActivity extends AppCompatActivity {
     public final String SPREADY = "SPREADY";
 
     PictureRenderer renderer;
-    EditParameters currentParameters = new EditParameters(0.0, 0.5, 0.0);
-    EditParameters lastSavedParameters = new EditParameters(0.0, 0.0, 0.0);
+    EditParametersSplitColors currentParameters = new EditParametersSplitColors(0.0, 0.5, 0.0);
+    EditParametersSplitColors lastSavedParameters = new EditParametersSplitColors(0.0, 0.0, 0.0);
     Button colorButton;
     Button spreadXButton;
     Button spreadYButton;

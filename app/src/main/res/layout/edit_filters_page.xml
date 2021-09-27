@@ -90,236 +90,129 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/check"
-        app:layout_constraintVertical_bias="0.743">
+        app:layout_constraintVertical_bias="0.738">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent">
 
-            <!--            <ImageView-->
-<!--                android:id="@+id/filter1"-->
-<!--                android:layout_width="55dp"-->
-<!--                android:layout_height="38dp"-->
-<!--                android:layout_marginStart="24dp"-->
-<!--                android:background="#141416"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:srcCompat="@drawable/kaleido_drop" />-->
 
             <Button
-                android:id="@+id/filter1"
+                android:id="@+id/red"
                 style="?android:attr/borderlessButtonStyle"
-                android:layout_width="81dp"
-                android:layout_height="87dp"
-                android:layout_marginStart="16dp"
+                android:layout_width="90dp"
+                android:layout_height="95dp"
+                android:layout_marginStart="192dp"
                 android:background="#141416"
-                android:drawableTop="@drawable/dcb"
+                android:drawableTop="@drawable/red_color"
                 android:fontFamily="@font/brown_ll_regular"
-                android:text="BS1"
+                android:text="Red"
                 android:textColor="#A9AAA5"
-                android:textSize="10sp"
+                android:textSize="9sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.509"
+                app:layout_constraintVertical_bias="0.533"
                 tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
             <Button
-                android:id="@+id/filter2"
+                android:id="@+id/lightBlue"
                 style="?android:attr/borderlessButtonStyle"
-                android:layout_width="81dp"
-                android:layout_height="87dp"
-                android:layout_marginStart="76dp"
+                android:layout_width="90dp"
+                android:layout_height="95dp"
+                android:layout_marginStart="0dp"
                 android:background="#141416"
-                android:drawableTop="@drawable/dcb"
+                android:drawableTop="@drawable/lightblue_color"
                 android:fontFamily="@font/brown_ll_regular"
-                android:text="BS1"
+                android:text="Light Blue"
                 android:textColor="#A9AAA5"
-                android:textSize="10sp"
+                android:textSize="9sp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/darkGreen"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.509"
-                tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
-            <Button
-                android:id="@+id/filter3"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="81dp"
-                android:layout_height="87dp"
-                android:layout_marginStart="156dp"
-                android:background="#141416"
-                android:drawableTop="@drawable/dcb"
-                android:fontFamily="@font/brown_ll_regular"
-                android:text="BS1"
-                android:textColor="#A9AAA5"
-                android:textSize="10sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.509"
-                tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
-            <Button
-                android:id="@+id/filter4"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="81dp"
-                android:layout_height="87dp"
-                android:layout_marginStart="236dp"
-                android:background="#141416"
-                android:drawableTop="@drawable/dcb"
-                android:fontFamily="@font/brown_ll_regular"
-                android:text="BS1"
-                android:textColor="#A9AAA5"
-                android:textSize="10sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.509"
-                tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
-            <Button
-                android:id="@+id/filter5"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="81dp"
-                android:layout_height="87dp"
-                android:layout_marginStart="316dp"
-                android:background="#141416"
-                android:drawableTop="@drawable/dcb"
-                android:fontFamily="@font/brown_ll_regular"
-                android:text="BS1"
-                android:textColor="#A9AAA5"
-                android:textSize="10sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.509"
+                app:layout_constraintVertical_bias="0.466"
                 tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
             <Button
-                android:id="@+id/filter6"
+                android:id="@+id/yellow"
                 style="?android:attr/borderlessButtonStyle"
-                android:layout_width="81dp"
-                android:layout_height="87dp"
-                android:layout_marginStart="396dp"
+                android:layout_width="90dp"
+                android:layout_height="95dp"
+                android:layout_marginStart="288dp"
                 android:background="#141416"
-                android:drawableTop="@drawable/dcb"
+                android:drawableTop="@drawable/yellow_color"
                 android:fontFamily="@font/brown_ll_regular"
-                android:text="BS1"
+                android:text="Yellow"
                 android:textColor="#A9AAA5"
-                android:textSize="10sp"
+                android:textSize="9sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.509"
+                app:layout_constraintVertical_bias="0.533"
                 tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
             <Button
-                android:id="@+id/filter7"
+                android:id="@+id/darkGreen"
                 style="?android:attr/borderlessButtonStyle"
-                android:layout_width="81dp"
-                android:layout_height="87dp"
-                android:layout_marginStart="476dp"
+                android:layout_width="90dp"
+                android:layout_height="95dp"
+                android:layout_marginStart="96dp"
                 android:background="#141416"
-                android:drawableTop="@drawable/dcb"
+                android:drawableTop="@drawable/darkgreen_color"
                 android:fontFamily="@font/brown_ll_regular"
-                android:text="BS1"
+                android:text="Dark Green"
                 android:textColor="#A9AAA5"
-                android:textSize="10sp"
+                android:textSize="9sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.509"
+                app:layout_constraintVertical_bias="0.533"
                 tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
-<!--            <ImageView-->
-<!--                android:id="@+id/filter2"-->
-<!--                android:layout_width="55dp"-->
-<!--                android:layout_height="38dp"-->
-<!--                android:layout_marginStart="112dp"-->
-<!--                android:background="#141416"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:srcCompat="@drawable/lensball" />-->
+            <!--            <Button-->
+            <!--                android:id="@+id/purple"-->
+            <!--                style="?android:attr/borderlessButtonStyle"-->
+            <!--                android:layout_width="90dp"-->
+            <!--                android:layout_height="95dp"-->
+            <!--                android:layout_marginStart="384dp"-->
+            <!--                android:background="#141416"-->
+            <!--                android:drawableTop="@drawable/purple_color"-->
+            <!--                android:fontFamily="@font/brown_ll_regular"-->
+            <!--                android:text="Purple"-->
+            <!--                android:textColor="#A9AAA5"-->
+            <!--                android:textSize="9sp"-->
+            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="parent"-->
+            <!--                app:layout_constraintVertical_bias="0.533"-->
+            <!--                tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />-->
 
-<!--            <ImageView-->
-<!--                android:id="@+id/filter3"-->
-<!--                android:layout_width="55dp"-->
-<!--                android:layout_height="38dp"-->
-<!--                android:layout_marginStart="200dp"-->
-<!--                android:background="#141416"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:srcCompat="@drawable/split_color" />-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/filter4"-->
-<!--                android:layout_width="55dp"-->
-<!--                android:layout_height="38dp"-->
-<!--                android:layout_marginStart="280dp"-->
-<!--                android:background="#141416"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:srcCompat="@drawable/split_color" />-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/filter5"-->
-<!--                android:layout_width="55dp"-->
-<!--                android:layout_height="38dp"-->
-<!--                android:layout_marginStart="360dp"-->
-<!--                android:background="#141416"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:srcCompat="@drawable/lensball" />-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/filter6"-->
-<!--                android:layout_width="55dp"-->
-<!--                android:layout_height="38dp"-->
-<!--                android:layout_marginStart="440dp"-->
-<!--                android:background="#141416"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:srcCompat="@drawable/lensball" />-->
-
-
-<!--            <ImageView-->
-<!--                android:id="@+id/filter7"-->
-<!--                android:layout_width="55dp"-->
-<!--                android:layout_height="38dp"-->
-<!--                android:layout_marginStart="520dp"-->
-<!--                android:background="#141416"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:srcCompat="@drawable/lensball" />-->
-
-<!--            <Button-->
-<!--                android:id="@+id/filter8"-->
-<!--                android:layout_width="59dp"-->
-<!--                android:layout_height="100dp"-->
-<!--                android:layout_marginStart="520dp"-->
-<!--                android:background="#141416"-->
-<!--                android:drawableTop="@drawable/abc"-->
-<!--                android:fontFamily="@font/brown_ll_regular"-->
-<!--                android:text="BS1"-->
-<!--                android:textColor="#A9AAA5"-->
-<!--                android:textSize="10sp"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintVertical_bias="0.029"-->
-<!--                tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />-->
-
+            <!--            <Button-->
+            <!--                android:id="@+id/pink"-->
+            <!--                style="?android:attr/borderlessButtonStyle"-->
+            <!--                android:layout_width="90dp"-->
+            <!--                android:layout_height="95dp"-->
+            <!--                android:background="#141416"-->
+            <!--                android:drawableTop="@drawable/pink_color"-->
+            <!--                android:fontFamily="@font/brown_ll_regular"-->
+            <!--                android:text="Pink"-->
+            <!--                android:textColor="#A9AAA5"-->
+            <!--                android:textSize="9sp"-->
+            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintHorizontal_bias="0.5"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/purple"-->
+            <!--                app:layout_constraintTop_toTopOf="parent"-->
+            <!--                app:layout_constraintVertical_bias="0.466"-->
+            <!--                tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </HorizontalScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
