@@ -1,5 +1,8 @@
 package com.example.myapplication2.utils;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class EditParametersFilters {
     String color;
     double percentage;

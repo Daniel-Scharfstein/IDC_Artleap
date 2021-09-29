@@ -38,8 +38,8 @@ public class EditFiltersActivity extends AppCompatActivity {
     public final String DARK_PINK = "PINK";
 
     FilterRenderer renderer;
-    EditParametersFilters currentParameters = new EditParametersFilters(LIGHT_BLUE, 50.0);
-    EditParametersFilters lastSavedParameters = new EditParametersFilters(LIGHT_BLUE, 50.0);
+//    EditParametersFilters currentParameters = new EditParametersFilters(LIGHT_BLUE, 50.0);
+    EditParametersFilters lastSavedParameters = new EditParametersFilters(null, 0.5);
     ImageButton xBox;
     ImageButton checkBox;
     Button lightBlueColorButton;
@@ -87,15 +87,15 @@ public class EditFiltersActivity extends AppCompatActivity {
     public void clickOnBox() {
         xBox.setOnClickListener(ib -> {
             hideSeekBars();
-            currentParameters.setColor(lastSavedParameters.getColor());
-            colorSeekBar.setProgress((int) (lastSavedParameters.getPercentage()));
-            System.out.println(currentParameters.getColor() + "  " + currentParameters.getPercentage());
+            renderer.currentParameters.setColor(lastSavedParameters.getColor());
+            colorSeekBar.setProgress((int) (lastSavedParameters.getPercentage()*100));
+            System.out.println(renderer.currentParameters.getColor() + "  " + renderer.currentParameters.getPercentage());
         });
         checkBox.setOnClickListener(ib -> {
             hideSeekBars();
-            lastSavedParameters.setPercentage(currentParameters.getPercentage());
-            lastSavedParameters.setColor(currentParameters.getColor());
-            System.out.println(currentParameters.getColor() + "  " + currentParameters.getPercentage());
+            lastSavedParameters.setPercentage(renderer.currentParameters.getPercentage());
+            lastSavedParameters.setColor(renderer.currentParameters.getColor());
+            System.out.println(renderer.currentParameters.getColor() + "  " + renderer.currentParameters.getPercentage());
         });
     }
 
@@ -133,16 +133,18 @@ public class EditFiltersActivity extends AppCompatActivity {
     }
 
     public void showSeekBar() {
+        int width = 1048;
+        int height = 1015;
         lightBlueColorButton.setOnClickListener(ib -> {
             showSeekBars(LIGHT_BLUE);
-            currentParameters.setColor(LIGHT_BLUE);
+//            currentParameters.setColor(LIGHT_BLUE);
+            renderer.currentParameters.setColor(LIGHT_BLUE);
             colorSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                    currentParameters.setPercentage(seekBar.getProgress());
-//                    renderer.currentParameters.(currentParameters.getColor()/100);
-//                    renderer.onSurfaceChanged(null, width, height);
-//                    renderer.onDrawFrame(null);
+                    renderer.currentParameters.setPercentage((float) seekBar.getProgress()/100);
+                    renderer.onSurfaceChanged(null, width, height);
+                    renderer.onDrawFrame(null);
                 }
 
                 @Override
@@ -198,14 +200,14 @@ public class EditFiltersActivity extends AppCompatActivity {
 //        });
         darkGreenColorButton.setOnClickListener(ib -> {
             showSeekBars(DARK_GREEN);
-            currentParameters.setColor(DARK_GREEN);
+//            currentParameters.setColor(DARK_GREEN);
+            renderer.currentParameters.setColor(DARK_GREEN);
             colorSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                    currentParameters.setPercentage(seekBar.getProgress());
-//                    renderer.currentParameters.setColor(currentParameters.getColor()/100);
-//                    renderer.onSurfaceChanged(null, width, height);
-//                    renderer.onDrawFrame(null);
+                    renderer.currentParameters.setPercentage((float) seekBar.getProgress()/100);
+                    renderer.onSurfaceChanged(null, width, height);
+                    renderer.onDrawFrame(null);
                 }
 
                 @Override
@@ -219,14 +221,14 @@ public class EditFiltersActivity extends AppCompatActivity {
         });
         yellowColorButton.setOnClickListener(ib -> {
             showSeekBars(YELLOW);
-            currentParameters.setColor(YELLOW);
+//            currentParameters.setColor(YELLOW);
+            renderer.currentParameters.setColor(YELLOW);
             colorSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                    currentParameters.setPercentage(seekBar.getProgress());
-//                    renderer.currentParameters.setColor(currentParameters.getColor()/100);
-//                    renderer.onSurfaceChanged(null, width, height);
-//                    renderer.onDrawFrame(null);
+                    renderer.currentParameters.setPercentage((float) seekBar.getProgress()/100);
+                    renderer.onSurfaceChanged(null, width, height);
+                    renderer.onDrawFrame(null);
                 }
 
                 @Override
@@ -240,14 +242,14 @@ public class EditFiltersActivity extends AppCompatActivity {
         });
         redColorButton.setOnClickListener(ib -> {
             showSeekBars(RED);
-            currentParameters.setColor(RED);
+//            currentParameters.setColor(RED);
+            renderer.currentParameters.setColor(RED);
             colorSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                    currentParameters.setPercentage(seekBar.getProgress());
-//                    renderer.currentParameters.setColor(currentParameters.getColor()/100);
-//                    renderer.onSurfaceChanged(null, width, height);
-//                    renderer.onDrawFrame(null);
+                    renderer.currentParameters.setPercentage((float) seekBar.getProgress()/100);
+                    renderer.onSurfaceChanged(null, width, height);
+                    renderer.onDrawFrame(null);
                 }
 
                 @Override
@@ -304,7 +306,6 @@ public class EditFiltersActivity extends AppCompatActivity {
             gLView.setEGLContextClientVersion(2);
             renderer = new FilterRenderer(getApplicationContext());
             renderer.pic = picture;
-            renderer.currentParameters.setColor(0.0f);
             gLView.setRenderer(renderer);
         }
     }

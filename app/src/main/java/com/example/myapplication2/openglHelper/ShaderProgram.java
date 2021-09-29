@@ -13,6 +13,7 @@ abstract class ShaderProgram {
     protected static final String U_OPACITY = "u_Opacity";
     protected static final String U_COLOR = "u_Color";
     protected static final String U_ID = "u_Id";
+    protected static final String U_PERCENTAGE = "u_Percentage";
 
     // Attribute constants
     protected static final String A_POSITION = "a_Position";

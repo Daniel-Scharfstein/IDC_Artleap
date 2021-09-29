@@ -16,10 +16,12 @@ import android.opengl.GLES20;
 import android.opengl.GLSurfaceView.Renderer;
 import android.renderscript.Matrix4f;
 
+import com.example.myapplication2.utils.EditParametersFilters;
 import com.example.myapplication2.utils.EditParametersSplitColors;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.HashMap;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -40,13 +42,21 @@ public class FilterRenderer implements Renderer {
     private TextureFilterShaderProgram textureShaderProgram;
     private int texture;
 
-    public EditParametersSplitColors currentParameters = new EditParametersSplitColors(0.0, 0.0, 0.0);
+    public EditParametersFilters currentParameters = new EditParametersFilters(null, 0.5);
+    private HashMap<String, Float> colors = new HashMap<String, Float>();
+
 
 
 
 
     public FilterRenderer(Context context) {
+
         this.context = context;
+        colors.put(null, 0f);
+        colors.put("LIGHT BLUE",1f);
+        colors.put("DARK GREEN",2f);
+        colors.put("YELLOW",3f);
+        colors.put("RED",4f);
     }
 
     @Override
@@ -77,14 +87,10 @@ public class FilterRenderer implements Renderer {
         // Clear the rendering surface.
         glClear(GL_COLOR_BUFFER_BIT);
 
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-
-            textureShaderProgram.useProgram();
-            textureShaderProgram.setUniforms(matrix.getArray(), texture);
-            picture.bindFilterData(textureShaderProgram);
-            picture.draw();
+        textureShaderProgram.useProgram();
+        textureShaderProgram.setUniforms(matrix.getArray(), texture, colors.get(currentParameters.getColor()), (float) currentParameters.getPercentage());
+        picture.bindFilterData(textureShaderProgram);
+        picture.draw();
 
 
         saveChanges(checkWidth, checkHeight);

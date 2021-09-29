@@ -58,23 +58,6 @@ public class TextureShaderProgram extends ShaderProgram {
 
     }
 
-    public void setFilterUniforms(float[] matrix, int textureId) {
-        // Pass the matrix into the shader program.
-        GLES20.glUniformMatrix4fv(uMatrix, 1, false, matrix, 0);
-
-        // Set the active texture unit to texture unit 0.
-        GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
-
-        // Bind the texture to this unit.
-        GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, textureId);
-
-        // Tell the texture uniform sampler to use this texture in the shader by
-        // telling it to read from texture unit 0.
-        GLES20.glUniform1i(uTextureUnitLocation, 0);
-        GLES20.glUniform1f(uId, (float) textureId);
-
-
-    }
 
     public int getPositionAttributeLocation() {
         return aPositionLocation;
