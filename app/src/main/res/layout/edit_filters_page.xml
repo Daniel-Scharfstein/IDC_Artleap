@@ -84,135 +84,115 @@
         app:layout_constraintVertical_bias="0.738"
         app:srcCompat="@drawable/x_box" />
 
-    <HorizontalScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="110dp"
 
+    <Button
+        android:id="@+id/darkGreen"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="90dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="96dp"
+        android:background="#141416"
+        android:drawableTop="@drawable/darkgreen_color"
+        android:fontFamily="@font/brown_ll_regular"
+        android:text="Dark Green"
+        android:textColor="#A9AAA5"
+        android:textSize="9sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/check"
-        app:layout_constraintVertical_bias="0.738">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.924"
+        tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+    <Button
+        android:id="@+id/lightBlue"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="90dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="4dp"
+        android:background="#141416"
+        android:drawableTop="@drawable/lightblue_color"
+        android:fontFamily="@font/brown_ll_regular"
+        android:text="Light Blue"
+        android:textColor="#A9AAA5"
+        android:textSize="9sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.924"
+        tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
+    <Button
+        android:id="@+id/red"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="90dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="192dp"
+        android:background="#141416"
+        android:drawableTop="@drawable/red_color"
+        android:fontFamily="@font/brown_ll_regular"
+        android:text="Red"
+        android:textColor="#A9AAA5"
+        android:textSize="9sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.924"
+        tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
-            <Button
-                android:id="@+id/red"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="90dp"
-                android:layout_height="95dp"
-                android:layout_marginStart="192dp"
-                android:background="#141416"
-                android:drawableTop="@drawable/red_color"
-                android:fontFamily="@font/brown_ll_regular"
-                android:text="Red"
-                android:textColor="#A9AAA5"
-                android:textSize="9sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.533"
-                tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+    <Button
+        android:id="@+id/yellow"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="90dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="284dp"
+        android:background="#141416"
+        android:drawableTop="@drawable/yellow_color"
+        android:fontFamily="@font/brown_ll_regular"
+        android:text="Yellow"
+        android:textColor="#A9AAA5"
+        android:textSize="9sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.924"
+        tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
-            <Button
-                android:id="@+id/lightBlue"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="90dp"
-                android:layout_height="95dp"
-                android:layout_marginStart="0dp"
-                android:background="#141416"
-                android:drawableTop="@drawable/lightblue_color"
-                android:fontFamily="@font/brown_ll_regular"
-                android:text="Light Blue"
-                android:textColor="#A9AAA5"
-                android:textSize="9sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/darkGreen"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.466"
-                tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+    <!--            <Button-->
+        <!--                android:id="@+id/purple"-->
+        <!--                style="?android:attr/borderlessButtonStyle"-->
+        <!--                android:layout_width="90dp"-->
+        <!--                android:layout_height="95dp"-->
+        <!--                android:layout_marginStart="384dp"-->
+        <!--                android:background="#141416"-->
+        <!--                android:drawableTop="@drawable/purple_color"-->
+        <!--                android:fontFamily="@font/brown_ll_regular"-->
+        <!--                android:text="Purple"-->
+        <!--                android:textColor="#A9AAA5"-->
+        <!--                android:textSize="9sp"-->
+        <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--                app:layout_constraintStart_toStartOf="parent"-->
+        <!--                app:layout_constraintTop_toTopOf="parent"-->
+        <!--                app:layout_constraintVertical_bias="0.533"-->
+        <!--                tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />-->
 
-            <Button
-                android:id="@+id/yellow"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="90dp"
-                android:layout_height="95dp"
-                android:layout_marginStart="288dp"
-                android:background="#141416"
-                android:drawableTop="@drawable/yellow_color"
-                android:fontFamily="@font/brown_ll_regular"
-                android:text="Yellow"
-                android:textColor="#A9AAA5"
-                android:textSize="9sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.533"
-                tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+        <!--            <Button-->
+        <!--                android:id="@+id/pink"-->
+        <!--                style="?android:attr/borderlessButtonStyle"-->
+        <!--                android:layout_width="90dp"-->
+        <!--                android:layout_height="95dp"-->
+        <!--                android:background="#141416"-->
+        <!--                android:drawableTop="@drawable/pink_color"-->
+        <!--                android:fontFamily="@font/brown_ll_regular"-->
+        <!--                android:text="Pink"-->
+        <!--                android:textColor="#A9AAA5"-->
+        <!--                android:textSize="9sp"-->
+        <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--                app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                app:layout_constraintHorizontal_bias="0.5"-->
+        <!--                app:layout_constraintStart_toEndOf="@+id/purple"-->
+        <!--                app:layout_constraintTop_toTopOf="parent"-->
+        <!--                app:layout_constraintVertical_bias="0.466"-->
+        <!--                tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />-->
 
-            <Button
-                android:id="@+id/darkGreen"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="90dp"
-                android:layout_height="95dp"
-                android:layout_marginStart="96dp"
-                android:background="#141416"
-                android:drawableTop="@drawable/darkgreen_color"
-                android:fontFamily="@font/brown_ll_regular"
-                android:text="Dark Green"
-                android:textColor="#A9AAA5"
-                android:textSize="9sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.533"
-                tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!--            <Button-->
-            <!--                android:id="@+id/purple"-->
-            <!--                style="?android:attr/borderlessButtonStyle"-->
-            <!--                android:layout_width="90dp"-->
-            <!--                android:layout_height="95dp"-->
-            <!--                android:layout_marginStart="384dp"-->
-            <!--                android:background="#141416"-->
-            <!--                android:drawableTop="@drawable/purple_color"-->
-            <!--                android:fontFamily="@font/brown_ll_regular"-->
-            <!--                android:text="Purple"-->
-            <!--                android:textColor="#A9AAA5"-->
-            <!--                android:textSize="9sp"-->
-            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                app:layout_constraintTop_toTopOf="parent"-->
-            <!--                app:layout_constraintVertical_bias="0.533"-->
-            <!--                tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />-->
-
-            <!--            <Button-->
-            <!--                android:id="@+id/pink"-->
-            <!--                style="?android:attr/borderlessButtonStyle"-->
-            <!--                android:layout_width="90dp"-->
-            <!--                android:layout_height="95dp"-->
-            <!--                android:background="#141416"-->
-            <!--                android:drawableTop="@drawable/pink_color"-->
-            <!--                android:fontFamily="@font/brown_ll_regular"-->
-            <!--                android:text="Pink"-->
-            <!--                android:textColor="#A9AAA5"-->
-            <!--                android:textSize="9sp"-->
-            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintHorizontal_bias="0.5"-->
-            <!--                app:layout_constraintStart_toEndOf="@+id/purple"-->
-            <!--                app:layout_constraintTop_toTopOf="parent"-->
-            <!--                app:layout_constraintVertical_bias="0.466"-->
-            <!--                tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />-->
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </HorizontalScrollView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
