@@ -22,12 +22,12 @@ void main()
     texture.a = v_Opacity;
 
     if(v_Id == 2.0){
-        blue.r = v_Color/100;
+        blue.r = v_Color;
         gl_FragColor =  blue * texture;
         return;
     }
     else if(v_Id == 3.0){
-        red.g = v_Color/100;
+        red.g = v_Color;
         gl_FragColor = red * texture;
         return;
     }
