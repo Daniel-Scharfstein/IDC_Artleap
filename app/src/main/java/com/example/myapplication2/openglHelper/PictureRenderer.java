@@ -28,7 +28,7 @@ import javax.microedition.khronos.opengles.GL10;
 public class PictureRenderer implements Renderer {
     private final Context context;
 
-    private float[] opacity = {(float) 0.5, (float) 0.7, (float) 0.6};
+    private float[] opacity = {(float) 1, (float) 0.5, (float) 0.5};
     private Matrix4f[] matrix = new Matrix4f[3];
     private Picture[] pictures = new Picture[3];
 
@@ -101,20 +101,31 @@ public class PictureRenderer implements Renderer {
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
         if (currentParameters.getSpreadX() == 0 && currentParameters.getSpreadY() == 0){
-            opacity[0] = 1;
+            opacity[2] = 0;
+            opacity[1] = 0;
         }
         else
         {
-            opacity[0] = 0.5f;
+            opacity[2] = 0.5f;
+            opacity[1] = 0.5f;
         }
 
+        textureShaderPrograms[2].useProgram();
+        textureShaderPrograms[2].setUniforms(matrix[2].getArray(), texture[2], opacity[2], (float) currentParameters.getColor());
+        pictures[2].bindData(textureShaderPrograms[2]);
+        pictures[2].draw();
 
-        for (int i = 0; i < 3; i++) {
-            textureShaderPrograms[2-i].useProgram();
-            textureShaderPrograms[2-i].setUniforms(matrix[2-i].getArray(), texture[2-i], opacity[2-i], (float) currentParameters.getColor());
-            pictures[2-i].bindData(textureShaderPrograms[2-i]);
-            pictures[2-i].draw();
-        }
+        textureShaderPrograms[0].useProgram();
+        textureShaderPrograms[0].setUniforms(matrix[0].getArray(), texture[0], opacity[0], (float) currentParameters.getColor());
+        pictures[0].bindData(textureShaderPrograms[0]);
+        pictures[0].draw();
+
+        textureShaderPrograms[1].useProgram();
+        textureShaderPrograms[1].setUniforms(matrix[1].getArray(), texture[1], opacity[1], (float) currentParameters.getColor());
+        pictures[1].bindData(textureShaderPrograms[1]);
+        pictures[1].draw();
+
+
 
         saveChanges(checkWidth, checkHeight);
 
