@@ -1,4 +1,4 @@
-package com.example.myapplication2.utils;
+package com.example.artleap_android.utils;
 
 public class EditParametersSplitColors {
     double color;

@@ -1,9 +1,9 @@
-package com.example.myapplication2.openglHelper;
+package com.example.artleap_android.openglHelper;
 
 import static android.opengl.GLES20.glUseProgram;
 import android.content.Context;
 
-import com.example.myapplication2.utils.TextResourceReader;
+import com.example.artleap_android.utils.TextResourceReader;
 
 
 abstract class ShaderProgram {

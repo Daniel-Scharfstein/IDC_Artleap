@@ -1,4 +1,4 @@
-package com.example.myapplication2.openglHelper;
+package com.example.artleap_android.openglHelper;
 
 import static android.opengl.GLES20.GL_BLEND;
 import static android.opengl.GLES20.GL_COLOR_BUFFER_BIT;
@@ -16,7 +16,7 @@ import android.opengl.GLES20;
 import android.opengl.GLSurfaceView.Renderer;
 import android.renderscript.Matrix4f;
 
-import com.example.myapplication2.utils.EditParametersSplitColors;
+import com.example.artleap_android.utils.EditParametersSplitColors;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

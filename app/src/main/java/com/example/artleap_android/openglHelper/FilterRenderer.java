@@ -1,13 +1,8 @@
-package com.example.myapplication2.openglHelper;
+package com.example.artleap_android.openglHelper;
 
-import static android.opengl.GLES20.GL_BLEND;
 import static android.opengl.GLES20.GL_COLOR_BUFFER_BIT;
-import static android.opengl.GLES20.GL_ONE_MINUS_SRC_ALPHA;
-import static android.opengl.GLES20.GL_SRC_ALPHA;
-import static android.opengl.GLES20.glBlendFunc;
 import static android.opengl.GLES20.glClear;
 import static android.opengl.GLES20.glClearColor;
-import static android.opengl.GLES20.glEnable;
 import static android.opengl.GLES20.glViewport;
 
 import android.content.Context;
@@ -16,8 +11,7 @@ import android.opengl.GLES20;
 import android.opengl.GLSurfaceView.Renderer;
 import android.renderscript.Matrix4f;
 
-import com.example.myapplication2.utils.EditParametersFilters;
-import com.example.myapplication2.utils.EditParametersSplitColors;
+import com.example.artleap_android.utils.EditParametersFilters;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

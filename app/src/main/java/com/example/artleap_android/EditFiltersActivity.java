@@ -1,4 +1,4 @@
-package com.example.myapplication2;
+package com.example.artleap_android;
 
 import android.app.ActivityManager;
 import android.content.Context;
@@ -22,8 +22,8 @@ import android.widget.SeekBar;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication2.openglHelper.FilterRenderer;
-import com.example.myapplication2.utils.EditParametersFilters;
+import com.example.artleap_android.openglHelper.FilterRenderer;
+import com.example.artleap_android.utils.EditParametersFilters;
 
 import java.io.File;
 import java.util.Objects;
@@ -38,15 +38,12 @@ public class EditFiltersActivity extends AppCompatActivity {
     public final String DARK_PINK = "PINK";
 
     FilterRenderer renderer;
-//    EditParametersFilters currentParameters = new EditParametersFilters(LIGHT_BLUE, 50.0);
     EditParametersFilters lastSavedParameters = new EditParametersFilters(null, 0.5);
     ImageButton xBox;
     ImageButton checkBox;
     Button lightBlueColorButton;
     Button redColorButton;
     Button yellowColorButton;
-    //    Button pinkColorButton;
-//    Button purpleColorButton;
     Button darkGreenColorButton;
 
     SeekBar colorSeekBar;
@@ -73,8 +70,6 @@ public class EditFiltersActivity extends AppCompatActivity {
         lightBlueColorButton = findViewById(R.id.lightBlue);
         redColorButton = findViewById(R.id.red);
         yellowColorButton = findViewById(R.id.yellow);
-//        pinkColorButton = findViewById(R.id.pink);
-//        purpleColorButton = findViewById(R.id.purple);
         darkGreenColorButton = findViewById(R.id.darkGreen);
 
         xBox = findViewById(R.id.xBox);
@@ -115,16 +110,12 @@ public class EditFiltersActivity extends AppCompatActivity {
         redColorButton.setVisibility(View.VISIBLE);
         yellowColorButton.setVisibility(View.VISIBLE);
         darkGreenColorButton.setVisibility(View.VISIBLE);
-//        pinkColorButton.setVisibility(View.VISIBLE);
-//        purpleColorButton.setVisibility(View.VISIBLE);
     }
 
     public void showSeekBars(String buttonName) {
         lightBlueColorButton.setVisibility(buttonName.equals(LIGHT_BLUE) ? View.VISIBLE : View.GONE);
         yellowColorButton.setVisibility(buttonName.equals(YELLOW) ? View.VISIBLE : View.GONE);
         redColorButton.setVisibility(buttonName.equals(RED) ? View.VISIBLE : View.GONE);
-//        pinkColorButton.setVisibility(buttonName.equals(DARK_PINK) ? View.VISIBLE : View.GONE);
-//        purpleColorButton.setVisibility(buttonName.equals(PURPLE) ? View.VISIBLE : View.GONE);
         darkGreenColorButton.setVisibility(buttonName.equals(DARK_GREEN) ? View.VISIBLE : View.GONE);
 
         colorSeekBar.setVisibility(View.VISIBLE);
@@ -137,7 +128,6 @@ public class EditFiltersActivity extends AppCompatActivity {
         int height = 1015;
         lightBlueColorButton.setOnClickListener(ib -> {
             showSeekBars(LIGHT_BLUE);
-//            currentParameters.setColor(LIGHT_BLUE);
             renderer.currentParameters.setColor(LIGHT_BLUE);
             colorSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
@@ -156,51 +146,9 @@ public class EditFiltersActivity extends AppCompatActivity {
                 }
             });
         });
-//        purpleColorButton.setOnClickListener(ib -> {
-//            showSeekBars(PURPLE);
-//            currentParameters.setColor(PURPLE);
-//            colorSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-//                @Override
-//                public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-//                    currentParameters.setPercentage(seekBar.getProgress());
-////                    renderer.currentParameters.setColor(currentParameters.getColor()/100);
-////                    renderer.onSurfaceChanged(null, width, height);
-////                    renderer.onDrawFrame(null);
-//                }
-//
-//                @Override
-//                public void onStartTrackingTouch(SeekBar seekBar) {
-//                }
-//
-//                @Override
-//                public void onStopTrackingTouch(SeekBar seekBar) {
-//                }
-//            });
-//        });
-//        pinkColorButton.setOnClickListener(ib -> {
-//            showSeekBars(DARK_PINK);
-//            currentParameters.setColor(DARK_PINK);
-//            colorSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-//                @Override
-//                public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-//                    currentParameters.setPercentage(seekBar.getProgress());
-////                    renderer.currentParameters.setColor(currentParameters.getColor()/100);
-////                    renderer.onSurfaceChanged(null, width, height);
-////                    renderer.onDrawFrame(null);
-//                }
-//
-//                @Override
-//                public void onStartTrackingTouch(SeekBar seekBar) {
-//                }
-//
-//                @Override
-//                public void onStopTrackingTouch(SeekBar seekBar) {
-//                }
-//            });
-//        });
+
         darkGreenColorButton.setOnClickListener(ib -> {
             showSeekBars(DARK_GREEN);
-//            currentParameters.setColor(DARK_GREEN);
             renderer.currentParameters.setColor(DARK_GREEN);
             colorSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
@@ -221,7 +169,6 @@ public class EditFiltersActivity extends AppCompatActivity {
         });
         yellowColorButton.setOnClickListener(ib -> {
             showSeekBars(YELLOW);
-//            currentParameters.setColor(YELLOW);
             renderer.currentParameters.setColor(YELLOW);
             colorSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
@@ -240,9 +187,9 @@ public class EditFiltersActivity extends AppCompatActivity {
                 }
             });
         });
+
         redColorButton.setOnClickListener(ib -> {
             showSeekBars(RED);
-//            currentParameters.setColor(RED);
             renderer.currentParameters.setColor(RED);
             colorSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override

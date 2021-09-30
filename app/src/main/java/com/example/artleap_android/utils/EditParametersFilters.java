@@ -1,7 +1,4 @@
-package com.example.myapplication2.utils;
-
-import java.util.HashMap;
-import java.util.Map;
+package com.example.artleap_android.utils;
 
 public class EditParametersFilters {
     String color;

@@ -1,4 +1,4 @@
-package com.example.myapplication2.openglHelper;
+package com.example.artleap_android.openglHelper;
 
 
 import static android.opengl.GLES20.GL_COMPILE_STATUS;

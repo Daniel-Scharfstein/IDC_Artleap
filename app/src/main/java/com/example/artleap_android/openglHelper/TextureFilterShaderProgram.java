@@ -1,9 +1,9 @@
-package com.example.myapplication2.openglHelper;
+package com.example.artleap_android.openglHelper;
 
 import android.content.Context;
 import android.opengl.GLES20;
 
-import com.example.myapplication2.R;
+import com.example.artleap_android.R;
 
 public class TextureFilterShaderProgram extends ShaderProgram {
     // Uniform locations

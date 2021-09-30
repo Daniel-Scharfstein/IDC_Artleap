@@ -10,7 +10,7 @@
         <entry key="app/src/main/res/drawable/rounded_corner_style.xml" value="0.16666666666666666" />
         <entry key="app/src/main/res/drawable/rounded_corner_style_image.xml" value="0.24635416666666668" />
         <entry key="app/src/main/res/layout/abs_layout.xml" value="0.21302083333333333" />
-        <entry key="app/src/main/res/layout/action_bar.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/action_bar.xml" value="0.5" />
         <entry key="app/src/main/res/layout/action_bar_edit.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/activity_home_page.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />

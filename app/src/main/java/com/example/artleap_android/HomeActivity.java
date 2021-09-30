@@ -1,4 +1,4 @@
-package com.example.myapplication2;
+package com.example.artleap_android;
 
 import static android.content.Intent.EXTRA_SUBJECT;
 

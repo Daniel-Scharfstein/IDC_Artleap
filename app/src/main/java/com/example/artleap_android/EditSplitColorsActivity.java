@@ -1,4 +1,4 @@
-package com.example.myapplication2;
+package com.example.artleap_android;
 
 import android.app.ActivityManager;
 import android.content.Context;
@@ -22,8 +22,8 @@ import android.widget.SeekBar;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication2.openglHelper.PictureRenderer;
-import com.example.myapplication2.utils.EditParametersSplitColors;
+import com.example.artleap_android.openglHelper.PictureRenderer;
+import com.example.artleap_android.utils.EditParametersSplitColors;
 
 import java.io.File;
 import java.util.Objects;

@@ -1,10 +1,8 @@
-package com.example.myapplication2.openglHelper;
+package com.example.artleap_android.openglHelper;
 
 import static android.opengl.GLES20.GL_FLOAT;
 import static android.opengl.GLES20.glEnableVertexAttribArray;
 import static android.opengl.GLES20.glVertexAttribPointer;
-
-import com.example.myapplication2.openglHelper.Constants;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
